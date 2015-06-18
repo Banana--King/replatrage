@@ -15,7 +15,7 @@ public class User {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idUser;
+	private int id;
 	private String nom;
 	private String prenom;
 	private String username;
@@ -23,11 +23,11 @@ public class User {
 	private boolean enabled;
 		
 	/* ---------- GETTERS / SETTERS ---------- */
-	public int getIdUser() {
-		return idUser;
+	public int getId() {
+		return id;
 	}
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getNom() {
@@ -65,6 +65,6 @@ public class User {
 	}
 	@Override
     public String toString(){
-        return "idUser="+idUser+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;
+        return "idUser="+id+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;
     }
 }
