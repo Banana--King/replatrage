@@ -21,14 +21,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void addUser(User p) {
-		this.userDAO.addUser(p);
+	public void addUser(User u) {
+		this.userDAO.addUser(u);
 	}
 
 	@Override
 	@Transactional
-	public void updateUser(User p) {
-		this.userDAO.updateUser(p);
+	public void updateUser(User u) {
+		this.userDAO.updateUser(u);
 	}
 
 	@Override

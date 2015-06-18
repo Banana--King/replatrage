@@ -1,10 +1,16 @@
 package com.journaldev.spring.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;  
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +19,7 @@ public class User {
 	// attributs de la class User
  
     @Id
-    @Column(name="id")
+    @Column(name="idUser")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String nom;
@@ -21,6 +27,12 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
+	
+	@ManyToMany(cascade=CascadeType.ALL)  
+    @JoinTable(name="USERMISSION",  
+    joinColumns={@JoinColumn(name="idUser", referencedColumnName="idUser")},  
+    inverseJoinColumns={@JoinColumn(name="idMission", referencedColumnName="idMission")})  
+    private List<Mission> missions;  
 		
 	/* ---------- GETTERS / SETTERS ---------- */
 	public int getId() {
@@ -62,6 +74,12 @@ public class User {
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	public List<Mission> getMissions() {
+		return missions;
+	}
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
 	}
 	@Override
     public String toString(){

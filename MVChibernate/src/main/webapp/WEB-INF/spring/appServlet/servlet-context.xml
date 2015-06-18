@@ -40,8 +40,8 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.journaldev.spring.model.Person</beans:value>
                 <beans:value>com.journaldev.spring.model.User</beans:value>
+                <beans:value>com.journaldev.spring.model.Mission</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -56,13 +56,6 @@
 	<!-- ######################################### -->
 	<!-- #### LES BEANS SONT DECLARES ICI !!! #### -->
 	<!-- ######################################### -->
-	<!-- bean Person -->
-	<beans:bean id="personDAO" class="com.journaldev.spring.dao.PersonDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="personService" class="com.journaldev.spring.service.PersonServiceImpl">
-		<beans:property name="personDAO" ref="personDAO"></beans:property>
-	</beans:bean>
 	
 	<!-- bean User -->
 	
@@ -72,6 +65,16 @@
     
     <beans:bean id="userService" class="com.journaldev.spring.service.UserServiceImpl">
         <beans:property name="userDAO" ref="userDAO"></beans:property>
+    </beans:bean>
+    
+	<!-- bean Mission -->
+	
+    <beans:bean id="missionDAO" class="com.journaldev.spring.dao.MissionDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="missionService" class="com.journaldev.spring.service.MissionServiceImpl">
+        <beans:property name="missionDAO" ref="missionDAO"></beans:property>
     </beans:bean>
      
 	<!-- #### FIN DE LA DECLARATION DES BEANS #### -->
