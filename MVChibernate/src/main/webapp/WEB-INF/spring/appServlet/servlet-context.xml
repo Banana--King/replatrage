@@ -41,6 +41,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.journaldev.spring.model.Person</beans:value>
+                <beans:value>com.journaldev.spring.model.User</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -65,11 +66,19 @@
 	
 	<!-- bean User -->
 	
+    <beans:bean id="userDAO" class="com.journaldev.spring.dao.UserDAOImpl">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="userService" class="com.journaldev.spring.service.UserServiceImpl">
+        <beans:property name="userDAO" ref="userDAO"></beans:property>
+    </beans:bean>
+     
 	<!-- #### FIN DE LA DECLARATION DES BEANS #### -->
 	
 	<!--context:component-scan base-package="com.journaldev.spring.dao" />
 	<context:component-scan base-package="com.journaldev.spring.service" /-->
-	<context:component-scan base-package="com.journaldev.spring.controller" />
+	<context:component-scan base-package="com.journaldev.spring" />
 	
 	<!-- pour résoudre le pb du bouton retour du navigateur au niveau des connexions -->
 	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
