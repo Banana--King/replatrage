@@ -10,7 +10,15 @@
     <http use-expressions="true">
         <intercept-url pattern="/**" access="isAuthenticated()"/> <!-- vérifie si on est enthentifié pour toutes les URLs -->
         <form-login default-target-url="/Users" always-use-default-target="true"/>  <!-- formulaire de login -->
-        <logout logout-url="/logout" logout-success-url="/"/> <!-- URL de déconnexion utilisée par les JSP -->
+        <logout logout-url="/logout" /> <!-- URL de déconnexion utilisée par les JSP -->
+        
+        <!-- <form-login 
+		    login-page="/login" 
+		    default-target-url="/welcome" 
+			authentication-failure-url="/login?error" 
+			username-parameter="username"
+			password-parameter="password" />
+		<logout logout-success-url="/login?logout" /> --> 
     </http>
     
     
