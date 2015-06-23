@@ -8,16 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;  
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="USER")
-public class User {
-	// attributs de la class User
- 
+public class User
+{
+	/* ---------- Attributs ---------- */
     @Id
     @Column(name="idUser")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,8 +33,27 @@ public class User {
     joinColumns={@JoinColumn(name="idUser", referencedColumnName="idUser")},  
     inverseJoinColumns={@JoinColumn(name="idMission", referencedColumnName="idMission")})  
     private List<Mission> missions;  
+	
+	
+	/* ---------- Constructeurs ---------- */
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public User(int id, String nom, String prenom, String username,
+			String password, boolean enabled, List<Mission> missions) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.missions = missions;
+	}
+	
 		
-	/* ---------- GETTERS / SETTERS ---------- */
+	/* ---------- Getters / Setters ---------- */
 	public int getId() {
 		return id;
 	}
@@ -81,6 +100,9 @@ public class User {
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;
 	}
+	
+	
+	/* ---------- Debug ---------- */
 	@Override
     public String toString(){
         return "idUser="+id+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;

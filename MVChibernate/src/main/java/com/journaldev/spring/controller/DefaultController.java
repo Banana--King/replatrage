@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class DefaultController {
 	 
 		//Spring Security see this :
-		@RequestMapping(value = "/login", method = RequestMethod.GET)
+		@RequestMapping(value = "/login", method = RequestMethod.POST)
 		public ModelAndView login(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {
-	 
+			System.out.println("blablabla : "+ error);
 			ModelAndView model = new ModelAndView();
 			if (error != null) {
 				model.addObject("error", "Invalid username and password!");

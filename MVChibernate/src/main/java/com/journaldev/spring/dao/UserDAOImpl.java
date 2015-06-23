@@ -53,6 +53,14 @@ public class UserDAOImpl implements UserDAO {
         logger.info("User loaded successfully, User details="+u);
         return u;
     }
+    
+    @Override
+    public User getUserByName(String name) {
+    	Session session = this.sessionFactory.getCurrentSession();      
+        User u = (User) session.load(User.class, new String(name));
+        logger.info("User loaded successfully, User details="+u);
+        return u;
+    }
  
     @Override
     public void removeUser(int id) {

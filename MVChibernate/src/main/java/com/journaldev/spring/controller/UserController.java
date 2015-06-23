@@ -1,6 +1,6 @@
 package com.journaldev.spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
  
+
 import com.journaldev.spring.model.User;
 import com.journaldev.spring.service.UserService;
  
@@ -34,9 +35,19 @@ public class UserController {
          
         if(u.getId() == 0){
             //new User, add it
+    		String password = u.getPassword();
+    		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    		String hashedPassword = passwordEncoder.encode(password);
+    		u.setPassword(hashedPassword);
+        	System.out.println("------TO STRING ADD------ :"+u.toString());
             this.UserService.addUser(u);
         }else{
             //existing User, call update
+        	String password = u.getPassword();
+    		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    		String hashedPassword = passwordEncoder.encode(password);
+    		u.setPassword(hashedPassword);
+        	System.out.println("------TO STRING UPDATE------ :"+u.toString());
             this.UserService.updateUser(u);
         }
          

@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
 	
 	private UserDAO userDAO;
 
+	
 	@Autowired
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
@@ -48,5 +49,7 @@ public class UserServiceImpl implements UserService {
 	public void removeUser(int id) {
 		this.userDAO.removeUser(id);
 	}
+
+	
 
 }
