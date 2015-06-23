@@ -21,7 +21,7 @@ public class User {
     @Id
     @Column(name="idUser")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int idUser;
 	private String nom;
 	private String prenom;
 	private String username;
@@ -35,11 +35,11 @@ public class User {
     private List<Mission> missions;  
 		
 	/* ---------- GETTERS / SETTERS ---------- */
-	public int getId() {
-		return id;
+	public int getIdUser() {
+		return idUser;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 	
 	public String getNom() {
@@ -83,6 +83,6 @@ public class User {
 	}
 	@Override
     public String toString(){
-        return "idUser="+id+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;
+        return "idUser="+idUser+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;
     }
 }

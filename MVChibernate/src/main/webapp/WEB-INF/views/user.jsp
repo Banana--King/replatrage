@@ -29,8 +29,8 @@
             </form:label>
         </td>
         <td>
-            <form:input path="id" readonly="true" size="8"  disabled="true" />
-            <form:hidden path="id" />
+            <form:input path="idUser" readonly="true" size="8"  disabled="true" />
+            <form:hidden path="idUser" />
         </td> 
     </tr>
     </c:if>
@@ -111,11 +111,11 @@
     </tr>
     <c:forEach items="${listUsers}" var="User">
         <tr>
-            <td>${User.id}</td>
+            <td>${User.idUser}</td>
             <td>${User.nom}</td>
             <td>${User.prenom}</td>
-            <td><a href="<c:url value='/User/edit/${User.id}' />" >Edit</a></td>
-            <td><a href="<c:url value='/User/remove/${User.id}' />" >Delete</a></td>
+            <td><a href="<c:url value='/User/edit/${User.idUser}' />" >Edit</a></td>
+            <td><a href="<c:url value='/User/remove/${User.idUser}' />" >Delete</a></td>
         </tr>
     </c:forEach>
     </table>
