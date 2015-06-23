@@ -33,7 +33,7 @@ public class UserController {
     @RequestMapping(value= "/User/add", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("User") User u){
          
-        if(u.getIdUser() == 0){
+        if(u.getId() == 0){
             //new User, add it
     		String password = u.getPassword();
     		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

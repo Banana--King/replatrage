@@ -15,8 +15,8 @@
 connecté en tant que: <sec:authentication property="name"/> <sec:authentication property="authorities"/>
 <a href="logout">Deconnexion</a>
 
- 
-<<<<<<< HEAD
+<%@ include file="/WEB-INF/views/nav.jsp" %>
+
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<h1>
 	    Add a User
@@ -105,89 +105,6 @@ connecté en tant que: <sec:authentication property="name"/> <sec:authentication 
 	</form:form>
 </sec:authorize>
 
-=======
-<c:url var="addAction" value="/User/add" ></c:url>
- 
-<form:form action="${addAction}" commandName="User">
-<table>
-    <c:if test="${!empty User.nom}">
-    <tr>
-        <td>
-            <form:label path="id">
-                <spring:message text="ID"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="idUser" readonly="true" size="8"  disabled="true" />
-            <form:hidden path="idUser" />
-        </td> 
-    </tr>
-    </c:if>
-    <tr>
-        <td>
-            <form:label path="nom">
-                <spring:message text="nom"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="nom" />
-        </td> 
-    </tr>
-    <tr>
-        <td>
-            <form:label path="prenom">
-                <spring:message text="prenom"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="prenom" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form:label path="username">
-                <spring:message text="username"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="username" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form:label path="password">
-                <spring:message text="password"/>
-            </form:label>
-        </td>
-        <td>
-            <form:password path="password" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form:label path="enabled">
-                <spring:message text="enabled"/>
-            </form:label>
-        </td>
-        <td>
-            <form:checkbox path="enabled" />
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <c:if test="${!empty User.nom}">
-                <input type="submit"
-                    value="<spring:message text="Edit User"/>" />
-            </c:if>
-            <c:if test="${empty User.nom}">
-                <input type="submit"
-                    value="<spring:message text="Add User"/>" />
-            </c:if>
-        </td>
-    </tr>
-</table>  
-</form:form>
->>>>>>> 10510b8a0873098b6f2de1d12d854dfee6553821
 <br>
 <h3>Users List</h3>
 <c:if test="${!empty listUsers}">
@@ -203,18 +120,13 @@ connecté en tant que: <sec:authentication property="name"/> <sec:authentication 
     </tr>
     <c:forEach items="${listUsers}" var="User">
         <tr>
-            <td>${User.idUser}</td>
+            <td>${User.id}</td>
             <td>${User.nom}</td>
             <td>${User.prenom}</td>
-<<<<<<< HEAD
             <sec:authorize access="hasRole('ROLE_ADMIN')">
 	            <td><a href="<c:url value='/User/edit/${User.id}' />" >Edit</a></td>
 	            <td><a href="<c:url value='/User/remove/${User.id}' />" >Delete</a></td>
             </sec:authorize>
-=======
-            <td><a href="<c:url value='/User/edit/${User.idUser}' />" >Edit</a></td>
-            <td><a href="<c:url value='/User/remove/${User.idUser}' />" >Delete</a></td>
->>>>>>> 10510b8a0873098b6f2de1d12d854dfee6553821
         </tr>
     </c:forEach>
     </table>

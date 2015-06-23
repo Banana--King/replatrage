@@ -34,6 +34,7 @@
 				<beans:value>com.journaldev.spring.model.User</beans:value>
 				<beans:value>com.journaldev.spring.model.Role</beans:value>
 				<beans:value>com.journaldev.spring.model.Mission</beans:value>
+				<beans:value>com.journaldev.spring.model.Partenaire</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -62,6 +63,14 @@
 	</beans:bean>
 	<beans:bean id="missionService" class="com.journaldev.spring.service.MissionServiceImpl">
 		<beans:property name="missionDAO" ref="missionDAO"></beans:property>
+	</beans:bean>
+	
+	<!-- bean Partenaire -->
+	<beans:bean id="partenaireDAO" class="com.journaldev.spring.dao.PartenaireDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="partenaireService" class="com.journaldev.spring.service.PartenaireServiceImpl">
+		<beans:property name="partenaireDAO" ref="partenaireDAO"></beans:property>
 	</beans:bean>
 	<!-- #### FIN DE LA DECLARATION DES BEANS #### -->
 	

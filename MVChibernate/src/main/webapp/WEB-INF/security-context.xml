@@ -4,31 +4,22 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
                     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                     http://www.springframework.org/schema/security 
-                    http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+                    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     
     <!-- toutes les infos et les confs sur la sécurité sont ici ! -->
     <http pattern="/login" security="none"></http>
     <http use-expressions="true">
         <intercept-url pattern="/**" access="isAuthenticated()"/> <!-- vérifie si on est enthentifié pour toutes les URLs -->
-<<<<<<< HEAD
         <form-login login-page="/login" default-target-url="/Users" authentication-failure-url="/login"/>  <!-- formulaire de login -->
         <logout logout-url="/logout" /> <!-- URL de déconnexion utilisée par les JSP -->
-=======
-        <!-- <form-login default-target-url="/Users" always-use-default-target="true"/>  --> <!-- formulaire de login -->
-        <!-- <logout logout-url="/logout" />  --> <!-- URL de déconnexion utilisée par les JSP -->
->>>>>>> 10510b8a0873098b6f2de1d12d854dfee6553821
         
-       <form-login 
+        <!-- <form-login 
 		    login-page="/login" 
 		    default-target-url="/welcome" 
 			authentication-failure-url="/login?error" 
 			username-parameter="username"
 			password-parameter="password" />
-<<<<<<< HEAD
 		<logout logout-success-url="/login?logout" /> -->
-=======
-		<logout logout-success-url="/login?logout" />
->>>>>>> 10510b8a0873098b6f2de1d12d854dfee6553821
     </http>
     
     
@@ -69,14 +60,8 @@
 		<authentication-provider>
 		    <password-encoder ref="encoder" />
 			<jdbc-user-service data-source-ref="dataSource"
-<<<<<<< HEAD
 				users-by-username-query="select username,password,enabled from user where username=?"
 				authorities-by-username-query="select username, roleName from user_role where username =?" />
-=======
-				users-by-username-query="select username, password, enabled from user where username = ?"
-				authorities-by-username-query="select u.username, ur.authority from user u, user_roles ur where u.idUser = ur.user_id and u.username = ? " />
-				<!--  <password-encoder ref="encoder"></password-encoder> -->
->>>>>>> 10510b8a0873098b6f2de1d12d854dfee6553821
 		</authentication-provider>
 	</authentication-manager>
 	
