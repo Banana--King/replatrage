@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.journaldev.spring.model.Mission;
-import com.journaldev.spring.model.Partenaire;
 import com.journaldev.spring.service.MissionService;
-import com.journaldev.spring.service.PartenaireService;
 
 @Controller
 public class MissionController
@@ -40,23 +38,12 @@ public class MissionController
             //new Mission, add it
         	System.out.println("------MISSION ADD------ :"+m.toString());
             this.missionService.addMission(m);
-        }else{
-            //existing Mission, call update
-        	System.out.println("------MISSION UPDATE------ :"+m.toString());
-            this.missionService.updateMission(m);
         }
          
         return "redirect:/Missions";
 	}
 	
-	
-	@RequestMapping("/Mission/remove/{idMission}")
-    public String removeMission(@PathVariable("idMission") int idMission){
-         
-        this.missionService.removeMission(idMission);
-        return "redirect:/Missions";
-    }
-	
+		
 	@RequestMapping("/Mission/edit/{idMission}")
     public String editPartenaire(@PathVariable("idMission") int idMission, Model model){
         model.addAttribute("Mission", this.missionService.getMissionById(idMission));
