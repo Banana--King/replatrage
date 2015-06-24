@@ -39,7 +39,7 @@ public class UserController {
     		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode(password);
     		u.setPassword(hashedPassword);
-        	System.out.println("------TO STRING ADD------ :"+u.toString());
+        	System.out.println("------USER ADD------ :"+u.toString());
             this.UserService.addUser(u);
         }else{
             //existing User, call update
@@ -47,7 +47,7 @@ public class UserController {
     		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode(password);
     		u.setPassword(hashedPassword);
-        	System.out.println("------TO STRING UPDATE------ :"+u.toString());
+        	System.out.println("------USER UPDATE------ :"+u.toString());
             this.UserService.updateUser(u);
         }
          

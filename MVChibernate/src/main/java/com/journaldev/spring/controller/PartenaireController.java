@@ -34,11 +34,11 @@ public class PartenaireController
 	{
 		if(p.getId() == 0){
             //new Partenaire, add it
-        	System.out.println("------TO STRING ADD------ :"+p.toString());
+        	System.out.println("------PARTENAIRE ADD------ :"+p.toString());
             this.partenaireService.addPartenaire(p);
         }else{
             //existing Partenaire, call update
-        	System.out.println("------TO STRING UPDATE------ :"+p.toString());
+        	System.out.println("------PARTENAIRE UPDATE------ :"+p.toString());
             this.partenaireService.updatePartenaire(p);
         }
          
