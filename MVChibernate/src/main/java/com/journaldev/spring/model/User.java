@@ -11,8 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Class qui représente le Bean User.
+ * Cette class va auto générer la table qui lui correspond en BDD (user)
+ * ATTENTION : il y a une jointure avec la table MISSION
+ */
 @Entity
 @Table(name="USER")
 public class User
@@ -28,10 +34,7 @@ public class User
 	private String password;
 	private boolean enabled;
 	
-	@ManyToMany(cascade=CascadeType.ALL)  
-    @JoinTable(name="USERMISSION",  
-    joinColumns={@JoinColumn(name="idUser", referencedColumnName="idUser")},  
-    inverseJoinColumns={@JoinColumn(name="idMission", referencedColumnName="idMission")})  
+	@OneToMany(mappedBy="user")
     private List<Mission> missions;  
 	
 	
@@ -52,49 +55,49 @@ public class User
 		this.missions = missions;
 	}
 	
-		
+	
 	/* ---------- Getters / Setters ---------- */
-	public int getId() {
+	public int getId() { // id
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public String getNom() {
+	public String getNom() { // nom
 		return nom;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	public String getPrenom() {
+	public String getPrenom() { // prenom
 		return prenom;
 	}
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 	
-	public String getUsername() {
+	public String getUsername() { // username
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
+	public String getPassword() { // password
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
   
-	public boolean isEnabled() {
+	public boolean isEnabled() { // enabled
 		return enabled;
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	public List<Mission> getMissions() {
+	public List<Mission> getMissions() { // missions
 		return missions;
 	}
 	public void setMissions(List<Mission> missions) {
@@ -104,7 +107,9 @@ public class User
 	
 	/* ---------- Debug ---------- */
 	@Override
-    public String toString(){
-        return "idUser="+id+", nom="+nom+", prenom="+prenom+", username="+username+", password="+password;
-    }
+	public String toString() {
+		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom
+				+ ", username=" + username + ", password=" + password
+				+ ", enabled=" + enabled + ", missions=" + missions + "]";
+	}
 }

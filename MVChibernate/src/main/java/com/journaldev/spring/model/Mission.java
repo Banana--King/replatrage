@@ -12,13 +12,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Class qui représente le Bean Mission.
+ * Cette class va auto générer la table qui lui correspond en BDD (mission)
+ * ATTENTION : il y a une jointure avec la table USER.
+ */
 @Entity
 @Table(name="MISSION")
-public class Mission {
-	// attributs de la class User
- 
+public class Mission
+{
+	/* ---------- Attributs ---------- */
     @Id
     @Column(name="idMission")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,15 +33,15 @@ public class Mission {
 	private String description;
 	private String etat;
 	private Calendar dateLastAction;
-	private double longitude;
-	private double latitude;
+	private String adresse;
+	/*private double longitude;
+	private double latitude;*/
 	
-	@ManyToMany(cascade=CascadeType.ALL)  
-    @JoinTable(name="USERMISSION",  
-    joinColumns={@JoinColumn(name="idMission", referencedColumnName="idMission")},  
-    inverseJoinColumns={@JoinColumn(name="idUser", referencedColumnName="idUser")})  
-    private List<User> users;  
-		
+	@ManyToOne
+    @JoinColumn(name="idUser")
+    private User user;
+	
+	
 	/* ---------- GETTERS / SETTERS ---------- */
 	public int getId() {
 		return id;
@@ -67,7 +73,7 @@ public class Mission {
 	public void setDateLastAction(Calendar dateLastAction) {
 		this.dateLastAction = dateLastAction;
 	}
-	public double getLongitude() {
+	/*public double getLongitude() {
 		return longitude;
 	}
 	public void setLongitude(double longitude) {
@@ -78,16 +84,26 @@ public class Mission {
 	}
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
+	}*/
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
-	public List<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public String getAdresse() {
+		return adresse;
 	}
-	@Override
+	
+	
+	
+	/* ---------- Debug ---------- */
+	/*@Override
     public String toString(){
         return "idUser="+id+", titre="+titre+", description="+description+", etat="+etat+", dateLastAction="+dateLastAction+", longitude="+longitude+", latitude="+latitude;
-    }
+    }*/
 }

@@ -1,20 +1,18 @@
 package com.journaldev.spring.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class DefaultController {
-	 
-		//Spring Security see this :
+public class DefaultController
+{
+		/**
+		 * Page d'accueil de l'application
+		 * @return -> la page d'accueil
+		 */
 		@RequestMapping(value = "/")
 		public String home()
 		{
 			return "home";
 		}
-
 }

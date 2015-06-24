@@ -6,9 +6,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.journaldev.spring.model.Partenaire;
 
+/**
+ * Class Partenaire qui implémente son propre DAO.
+ */
+@Repository("partenaireDAO")
 public class PartenaireDAOImpl implements PartenaireDAO
 {
 	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
@@ -19,6 +24,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
         this.sessionFactory = sf;
     }
 
+    /**
+     * Ajoute un Partenaire en BDD
+     */
 	@Override
 	public void addPartenaire(Partenaire p) {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -26,6 +34,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
         logger.info("Partenaire saved successfully, Partenaire Details="+p);
 	}
 
+	/**
+	 * Modifie un Partenaire en BDD
+	 */
 	@Override
 	public void updatePartenaire(Partenaire p) {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -33,6 +44,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
         logger.info("Partenaire updated successfully, Partenaire Details="+p);
 	}
 
+	/**
+	 * Selectionne tous les Partenaires en BDD
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Partenaire> listPartenaires() {
@@ -44,6 +58,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
         return PartenairesList;
 	}
 
+	/**
+	 * Selectionne un Partenaire en fonction de son ID en BDD
+	 */
 	@Override
 	public Partenaire getPartenaireById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();      
@@ -52,6 +69,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
 		return p;
 	}
 
+	/**
+	 * Selectionne un Partenaire en fonction de son nom en BDD
+	 */
 	@Override
 	public Partenaire getPartenaireByName(String name) {
 		Session session = this.sessionFactory.getCurrentSession();      
@@ -60,6 +80,9 @@ public class PartenaireDAOImpl implements PartenaireDAO
 		return p;
 	}
 
+	/**
+	 * Supprime un Partenaire en BDD selon son ID
+	 */
 	@Override
 	public void removePartenaire(int id) {
 		Session session = this.sessionFactory.getCurrentSession();

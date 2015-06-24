@@ -3,8 +3,10 @@ package com.journaldev.spring.dao;
 import java.util.List;
 
 import com.journaldev.spring.model.Partenaire;
-import com.journaldev.spring.model.User;
 
+/**
+ * Interface DAO des partenaires.
+ */
 public interface PartenaireDAO
 {
 	public void addPartenaire(Partenaire p);

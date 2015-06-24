@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.journaldev.spring.dao.UserDAO;
 import com.journaldev.spring.model.User;
 
+/**
+ * Class User qui implémente son propre Service.
+ */
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	

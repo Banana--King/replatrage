@@ -21,6 +21,12 @@ public class PartenaireController
 		this.partenaireService = ps;
 	}
 	
+/* ---------- Methodes ---------- */
+	/**
+	 * Affiche une liste de tous les partenaires, avec un formulaire d'ajout (en fonction des droits)
+	 * @param model -> Objet qui sert à créer une vue
+	 * @return -> la page des partenaires
+	 */
 	@RequestMapping(value="/Partenaires", method = RequestMethod.GET)
 	public String listPartenaires(Model model)
 	{
@@ -29,6 +35,11 @@ public class PartenaireController
 		return "partenaire";
 	}
 	
+	/**
+	 * Ajoute un partenaire en BDD.
+	 * @param p -> Objet de type Partenaire
+	 * @return -> redirection vers la liste des partenaires
+	 */
 	@RequestMapping(value= "/Partenaire/add", method = RequestMethod.POST)
 	public String addPartenaire(@ModelAttribute("Partenaire") Partenaire p)
 	{
@@ -45,14 +56,24 @@ public class PartenaireController
         return "redirect:/Partenaires";
 	}
 	
-	
+	/**
+	 * Supprime un Partenaire de la BDD
+	 * @param idPartenaire -> l'ID du Partenaire concerné en BDD
+	 * @return -> redirection vers la liste des Partenaires
+	 */
 	@RequestMapping("/Partenaire/remove/{idPartenaire}")
     public String removePartenaire(@PathVariable("idPartenaire") int idPartenaire){
          
         this.partenaireService.removePartenaire(idPartenaire);
         return "redirect:/Partenaires";
     }
-  
+	
+	/**
+	 * Modifie un partenaire en BDD
+	 * @param idPartenaire -> l'ID du Partenaire concerné en BDD
+	 * @param model 	   -> Objet qui permettra de créer la vue
+	 * @return -> le formulaire de modification d'un Partenaire
+	 */
     @RequestMapping("/Partenaire/edit/{idPartenaire}")
     public String editPartenaire(@PathVariable("idPartenaire") int idPartenaire, Model model){
         model.addAttribute("Partenaire", this.partenaireService.getPartenaireById(idPartenaire));

@@ -21,7 +21,12 @@ public class UserController {
     public void setUserService(UserService ps){
         this.UserService = ps;
     }
-     
+    
+    /**
+	 * Affiche une liste de tous les Users, avec un formulaire d'ajout (en fonction des droits)
+	 * @param model -> Objet qui sert à créer une vue
+	 * @return -> la page des Users
+	 */
     @RequestMapping(value = "/Users", method = RequestMethod.GET)
     public String listUsers(Model model) {
         model.addAttribute("User", new User());
@@ -29,12 +34,16 @@ public class UserController {
         return "user";
     }
      
-    //For add and update User both
+    /**
+	 * Ajoute un User en BDD.
+	 * @param u -> Objet de type User
+	 * @return -> redirection vers la liste des Users
+	 */
     @RequestMapping(value= "/User/add", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("User") User u){
          
         if(u.getId() == 0){
-            //new User, add it
+            // le user n'existe pas, donc on le créé (en cryptant son mdp façon Bcrypt)
     		String password = u.getPassword();
     		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode(password);
@@ -42,7 +51,7 @@ public class UserController {
         	System.out.println("------USER ADD------ :"+u.toString());
             this.UserService.addUser(u);
         }else{
-            //existing User, call update
+        	// le user existe, donc on le modifie (en cryptant son mdp façon Bcrypt)
         	String password = u.getPassword();
     		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     		String hashedPassword = passwordEncoder.encode(password);
@@ -54,7 +63,12 @@ public class UserController {
         return "redirect:/Users";
          
     }
-     
+    
+    /**
+     * Supprime un User en BDD
+     * @param idUser -> l'ID du User concerné en BDD
+     * @return -> redirectin vers la liste des Users
+     */
     @RequestMapping("/User/remove/{idUser}")
     public String removeUser(@PathVariable("idUser") int idUser){
          
@@ -62,6 +76,12 @@ public class UserController {
         return "redirect:/Users";
     }
   
+    /**
+     * Modifie un User en BDD
+     * @param idUser -> l'ID du User concerné en BDD
+     * @param model  -> Objet qui permettra de créer la vue
+     * @return -> le formulaire de modification d'un User
+     */
     @RequestMapping("/User/edit/{idUser}")
     public String editUser(@PathVariable("idUser") int idUser, Model model){
         model.addAttribute("User", this.UserService.getUserById(idUser));

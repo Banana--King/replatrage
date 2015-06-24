@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class qui représente le Bean Partenaire.
+ * Cette class va auto générer la table qui lui correspond en BDD (partenaire)
+ */
 @Entity
 @Table(name="PARTENAIRE")
 public class Partenaire

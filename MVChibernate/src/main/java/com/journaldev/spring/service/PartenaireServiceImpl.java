@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.journaldev.spring.dao.PartenaireDAO;
 import com.journaldev.spring.model.Partenaire;
 
-@Service("userService")
+/**
+ * Class Partenaire qui implémente son propre Service.
+ */
+@Service("partenaireService")
 public class PartenaireServiceImpl implements PartenaireService {
 
 	private PartenaireDAO partenaireDAO;

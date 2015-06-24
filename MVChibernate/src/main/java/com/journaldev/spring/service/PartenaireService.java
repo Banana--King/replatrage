@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.journaldev.spring.model.Partenaire;
 
+/**
+ * Interface Service des Partenaires
+ */
 public interface PartenaireService
 {
 	public void addPartenaire(Partenaire p);

@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class qui représente les roles des Users.
+ * Cette class va auto générer la table qui lui correspond en BDD (user_role)
+ */
 @Entity
 @Table(name="USER_ROLE")
 public class Role
