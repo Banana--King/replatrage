@@ -2,6 +2,7 @@ package com.journaldev.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -74,8 +75,10 @@ public class PartenaireDAOImpl implements PartenaireDAO
 	 */
 	@Override
 	public Partenaire getPartenaireByName(String name) {
-		Session session = this.sessionFactory.getCurrentSession();      
-		Partenaire p = (Partenaire) session.load(Partenaire.class, new String(name));
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = (Query) session.createQuery("from Partenaire where nom=:name");
+		query.setParameter("name", name);
+		Partenaire p = (Partenaire) query.uniqueResult();
 		logger.info("Partenaire loaded successfully, Partenaire details="+p);
 		return p;
 	}

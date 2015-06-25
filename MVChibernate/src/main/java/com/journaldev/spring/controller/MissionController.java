@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.journaldev.spring.model.Mission;
-import com.journaldev.spring.model.Partenaire;
 import com.journaldev.spring.service.MissionService;
-import com.journaldev.spring.service.PartenaireService;
 
 @Controller
 public class MissionController

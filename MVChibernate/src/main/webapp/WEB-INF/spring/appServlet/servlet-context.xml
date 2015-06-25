@@ -33,6 +33,7 @@
 			<beans:list>
 				<beans:value>com.journaldev.spring.model.User</beans:value>
 				<beans:value>com.journaldev.spring.model.Role</beans:value>
+				<beans:value>com.journaldev.spring.model.RoleUser</beans:value>
 				<beans:value>com.journaldev.spring.model.Mission</beans:value>
 				<beans:value>com.journaldev.spring.model.Partenaire</beans:value>
 			</beans:list>
@@ -55,6 +56,22 @@
 	</beans:bean>
 	<beans:bean id="userService" class="com.journaldev.spring.service.UserServiceImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
+	</beans:bean>
+	
+	<!-- bean Role -->
+	<beans:bean id="roleDAO" class="com.journaldev.spring.dao.RoleDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="roleService" class="com.journaldev.spring.service.RoleServiceImpl">
+		<beans:property name="roleDAO" ref="roleDAO"></beans:property>
+	</beans:bean>
+	
+	<!-- bean RoleUser -->
+	<beans:bean id="roleUserDAO" class="com.journaldev.spring.dao.RoleUserDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="roleUserService" class="com.journaldev.spring.service.RoleUserServiceImpl">
+		<beans:property name="roleUserDAO" ref="roleUserDAO"></beans:property>
 	</beans:bean>
 	
 	<!-- bean Mission -->

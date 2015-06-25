@@ -38,7 +38,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.journaldev.spring.model.User</beans:value>
-				<beans:value>com.journaldev.spring.model.Role</beans:value>
+				<beans:value>com.journaldev.spring.model.RoleUser</beans:value>
 				<beans:value>com.journaldev.spring.model.Mission</beans:value>
 			</beans:list>
 		</beans:property>

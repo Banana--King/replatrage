@@ -53,4 +53,11 @@ public class PartenaireServiceImpl implements PartenaireService {
 		this.partenaireDAO.removePartenaire(id);
 	}
 
+
+	@Override
+	@Transactional
+	public Partenaire getPartenaireByName(String name) {
+		return this.partenaireDAO.getPartenaireByName(name);
+	}
+
 }

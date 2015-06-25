@@ -11,6 +11,10 @@
 
 <%@ include file="/WEB-INF/views/nav.jsp" %>
 
+<c:if test="${!empty message}">
+	<h2>${message}</h2>
+</c:if>
+
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<h1>
 	    Add a Partenaire

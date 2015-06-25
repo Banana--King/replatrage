@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
  
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.journaldev.spring.model.User;
 import com.journaldev.spring.service.UserService;
  
@@ -40,8 +42,19 @@ public class UserController {
 	 * @return -> redirection vers la liste des Users
 	 */
     @RequestMapping(value= "/User/add", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("User") User u){
-         
+    public String addUser(@ModelAttribute("User") User u, RedirectAttributes redirectAttributes){
+        String message = "";
+    	if(u.getNom() == null || u.getNom().isEmpty()
+        		|| u.getPrenom() == null || u.getPrenom().isEmpty()
+        		|| u.getUsername() == null || u.getUsername().isEmpty()
+        		|| u.getPassword() == null || u.getPassword().isEmpty()){
+    		redirectAttributes.addFlashAttribute("message", "ERREUR : tous les champs doivent être remplis ...");
+        	return "redirect:/Users";
+        }
+        if(UserService.getUserByName(u.getUsername()) != null){
+        	redirectAttributes.addFlashAttribute("message", "ERREUR : Cet utilisateur existe déjà ...");
+        	return "redirect:/Users";
+        }
         if(u.getId() == 0){
             // le user n'existe pas, donc on le créé (en cryptant son mdp façon Bcrypt)
     		String password = u.getPassword();
@@ -49,6 +62,7 @@ public class UserController {
     		String hashedPassword = passwordEncoder.encode(password);
     		u.setPassword(hashedPassword);
         	System.out.println("------USER ADD------ :"+u.toString());
+        	message = "SUCCES : L'utilisateur a été ajouté !";
             this.UserService.addUser(u);
         }else{
         	// le user existe, donc on le modifie (en cryptant son mdp façon Bcrypt)
@@ -57,11 +71,12 @@ public class UserController {
     		String hashedPassword = passwordEncoder.encode(password);
     		u.setPassword(hashedPassword);
         	System.out.println("------USER UPDATE------ :"+u.toString());
+        	message = "SUCCES : L'utilisateur a été modifié !";
             this.UserService.updateUser(u);
         }
-         
-        return "redirect:/Users";
-         
+        
+        redirectAttributes.addFlashAttribute("message", message);
+        return "redirect:/Users";  
     }
     
     /**
@@ -70,9 +85,10 @@ public class UserController {
      * @return -> redirectin vers la liste des Users
      */
     @RequestMapping("/User/remove/{idUser}")
-    public String removeUser(@PathVariable("idUser") int idUser){
-         
+    public String removeUser(@PathVariable("idUser") int idUser, RedirectAttributes redirectAttributes){
         this.UserService.removeUser(idUser);
+        
+        redirectAttributes.addFlashAttribute("message", "SUCCES : L'utilisateur à été supprimé !");
         return "redirect:/Users";
     }
   
