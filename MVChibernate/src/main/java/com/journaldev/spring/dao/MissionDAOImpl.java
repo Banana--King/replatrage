@@ -28,13 +28,6 @@ public class MissionDAOImpl implements MissionDAO {
         logger.info("Mission saved successfully, Mission Details="+m);
     }
  
-    @Override
-    public void updateMission(Mission m) {
-        Session session = this.sessionFactory.getCurrentSession();
-        session.update(m);
-        logger.info("Mission updated successfully, Mission Details="+m);
-    }
- 
     @SuppressWarnings("unchecked")
     @Override
     public List<Mission> listMissions() {
@@ -54,14 +47,5 @@ public class MissionDAOImpl implements MissionDAO {
         return m;
     }
  
-    @Override
-    public void removeMission(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Mission m = (Mission) session.load(Mission.class, new Integer(id));
-        if(null != m){
-            session.delete(m);
-        }
-        logger.info("Mission deleted successfully, Mission details="+m);
-    }
  
 }
