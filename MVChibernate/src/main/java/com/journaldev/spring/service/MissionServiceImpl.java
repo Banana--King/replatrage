@@ -25,6 +25,11 @@ public class MissionServiceImpl implements MissionService {
 		this.missionDAO.addMission(m);
 	}
 
+	@Override
+	@Transactional
+	public void updateMission(Mission m) {
+		this.missionDAO.updateMission(m);
+	}
 
 	@Override
 	@Transactional
@@ -36,6 +41,12 @@ public class MissionServiceImpl implements MissionService {
 	@Transactional
 	public Mission getMissionById(int id) {
 		return this.missionDAO.getMissionById(id);
+	}
+
+	@Override
+	@Transactional
+	public void removeMission(int id) {
+		this.missionDAO.removeMission(id);
 	}
 
 }

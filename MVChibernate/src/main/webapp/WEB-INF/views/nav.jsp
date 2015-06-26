@@ -4,6 +4,7 @@
 	<li><a href="Roles">roles</a></li>
 	<li><a href="RoleUsers">roles par utilisateur</a></li>
 	<li><a href="Partenaires">partenaires</a></li>
+	<li><a href="Etats">workflow</a></li>
 	<li><a href="Missions">missions</a></li>
 	<li><a href="#">exportations</a></li>
 	<li><a href="logout">deconnexion</a></li>

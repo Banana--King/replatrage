@@ -91,7 +91,7 @@ public class PartenaireController
     @RequestMapping("/Partenaire/edit/{idPartenaire}")
     public String editPartenaire(@PathVariable("idPartenaire") int idPartenaire, Model model){
         model.addAttribute("Partenaire", this.partenaireService.getPartenaireById(idPartenaire));
-        model.addAttribute("listUsers", this.partenaireService.listPartenaires());
+        model.addAttribute("listPartenaires", this.partenaireService.listPartenaires());
         return "partenaire";
     }
 }

@@ -106,6 +106,6 @@ public class User
 	public String toString() {
 		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom
 				+ ", username=" + username + ", password=" + password
-				+ ", enabled=" + enabled + ", missions=" + missions + "]";
+				+ ", enabled=" + enabled + "]";
 	}
 }

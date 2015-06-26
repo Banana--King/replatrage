@@ -38,64 +38,91 @@ public class Mission
     private User user;
 	
 	
+	
+	
+	public Mission() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Mission(int id, String titre, String description, String etat,
+			Calendar dateLastAction, String adresse, User user) {
+		super();
+		this.id = id;
+		this.titre = titre;
+		this.description = description;
+		this.etat = etat;
+		this.dateLastAction = dateLastAction;
+		this.adresse = adresse;
+		this.user = user;
+	}
+
 	/* ---------- GETTERS / SETTERS ---------- */
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitre() {
 		return titre;
 	}
+
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getEtat() {
 		return etat;
 	}
+
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
 	public Calendar getDateLastAction() {
 		return dateLastAction;
 	}
+
 	public void setDateLastAction(Calendar dateLastAction) {
 		this.dateLastAction = dateLastAction;
 	}
-	/*public double getLongitude() {
-		return longitude;
+
+	public String getAdresse() {
+		return adresse;
 	}
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-	public double getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}*/
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 	
-	public User getUser() {
-		return user;
-	}
-	public String getAdresse() {
-		return adresse;
-	}
 	
-	
+	@Override
+	public String toString() {
+		return "Mission [id=" + id + ", titre=" + titre + ", description="
+				+ description + ", etat=" + etat + ", dateLastAction="
+				+ dateLastAction + ", adresse=" + adresse + ", user=" + user
+				+ "]";
+	}
+
 	
 	/* ---------- Debug ---------- */
 	/*@Override

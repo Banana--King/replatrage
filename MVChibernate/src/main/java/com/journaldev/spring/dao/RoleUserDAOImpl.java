@@ -14,7 +14,7 @@ import com.journaldev.spring.model.RoleUser;
 @Repository("roleUserDAO")
 public class RoleUserDAOImpl implements RoleUserDAO
 {
-	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(RoleUserDAOImpl.class);
 	 
     private SessionFactory sessionFactory;
      

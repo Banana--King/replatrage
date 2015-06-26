@@ -36,6 +36,7 @@
 				<beans:value>com.journaldev.spring.model.RoleUser</beans:value>
 				<beans:value>com.journaldev.spring.model.Mission</beans:value>
 				<beans:value>com.journaldev.spring.model.Partenaire</beans:value>
+				<beans:value>com.journaldev.spring.model.Etat</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -88,6 +89,14 @@
 	</beans:bean>
 	<beans:bean id="partenaireService" class="com.journaldev.spring.service.PartenaireServiceImpl">
 		<beans:property name="partenaireDAO" ref="partenaireDAO"></beans:property>
+	</beans:bean>
+	
+	<!-- bean Etat -->
+	<beans:bean id="etatDAO" class="com.journaldev.spring.dao.EtatDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="etatService" class="com.journaldev.spring.service.EtatServiceImpl">
+		<beans:property name="etatDAO" ref="etatDAO"></beans:property>
 	</beans:bean>
 	<!-- #### FIN DE LA DECLARATION DES BEANS #### -->
 	

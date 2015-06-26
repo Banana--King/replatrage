@@ -17,7 +17,7 @@ import com.journaldev.spring.model.Partenaire;
 @Repository("partenaireDAO")
 public class PartenaireDAOImpl implements PartenaireDAO
 {
-	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(PartenaireDAOImpl.class);
 	 
     private SessionFactory sessionFactory;
      
