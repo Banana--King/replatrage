@@ -95,7 +95,7 @@
 	        </td>
 	    	<td>
 	    		<form:select path="user">
-	    			<option value="">Choisir un utilisateur</option>
+	    			<option value="0">Choisir un utilisateur</option>
 		        	<c:forEach items="${listUsers}" var="User">
 		        				<option value="${User.id}">${User.username}</option>
 		    		</c:forEach>
@@ -140,7 +140,16 @@
 	            <td>${Mission.etat}</td>
 	            <td>${Mission.description}</td>
 	            <td>${Mission.adresse}</td>
-	            <td>${Mission.user.username}</td>
+	            <td>
+	            	<c:choose>
+	        			<c:when test="${!empty Mission.user.username}">
+	        				${Mission.user.username}
+	        			</c:when>
+	        			<c:otherwise>
+	        				AUCUN
+	        			</c:otherwise>
+	        		</c:choose>
+	            </td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
 		            <td><a href="<c:url value='/Mission/edit/${Mission.id}' />" >Edit</a></td>
 		            <td><a href="<c:url value='/Mission/remove/${Mission.id}' />" >Delete</a></td>

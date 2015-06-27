@@ -76,7 +76,7 @@ public class PartenaireDAOImpl implements PartenaireDAO
 	@Override
 	public Partenaire getPartenaireByName(String name) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = (Query) session.createQuery("from Partenaire where nom=:name");
+		Query query = session.createQuery("from Partenaire where nom=:name");
 		query.setParameter("name", name);
 		Partenaire p = (Partenaire) query.uniqueResult();
 		logger.info("Partenaire loaded successfully, Partenaire details="+p);

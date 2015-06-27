@@ -59,7 +59,7 @@ public class EtatDAOImpl implements EtatDAO
 	@Override
 	public Etat getEtatByName(String name) {
 		Session session = this.sessionFactory.getCurrentSession();      
-		Query query = (Query) session.createQuery("from Etat where nom=:nom");
+		Query query = session.createQuery("from Etat where nom=:nom");
 		query.setParameter("nom", name);
 		Etat e = (Etat) query.uniqueResult();
 		logger.info("Etat loaded successfully, Etat details="+e);

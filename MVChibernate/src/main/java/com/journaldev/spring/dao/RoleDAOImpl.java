@@ -58,7 +58,7 @@ public class RoleDAOImpl implements RoleDAO
 	@Override
 	public Role getRoleByName(String name) {
 		Session session = this.sessionFactory.getCurrentSession();      
-		Query query = (org.hibernate.Query) session.createQuery("from Role where name=:name");
+		Query query = session.createQuery("from Role where name=:name");
 		query.setParameter("name", name);
 		Role r = (Role) query.uniqueResult();
 		logger.info("Role loaded successfully, Role details="+r);

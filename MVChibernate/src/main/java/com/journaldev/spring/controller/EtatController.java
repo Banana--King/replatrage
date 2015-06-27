@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.journaldev.spring.model.Etat;
-import com.journaldev.spring.model.Partenaire;
 import com.journaldev.spring.service.EtatService;
-import com.journaldev.spring.service.PartenaireService;
 
 @Controller
 public class EtatController

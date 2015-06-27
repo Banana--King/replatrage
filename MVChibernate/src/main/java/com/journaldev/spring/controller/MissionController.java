@@ -1,5 +1,7 @@
 package com.journaldev.spring.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,15 +55,22 @@ public class MissionController
 	@RequestMapping(value= "/Mission/add", method = RequestMethod.POST)
 	public String addMission(@ModelAttribute("Mission") Mission m, BindingResult result, @RequestParam("user") int userId, RedirectAttributes redirectAttributes)
 	{
-		User user = userService.getUserById(userId);
+		User user  = null;
+		if(userId != 0){
+			user = userService.getUserById(userId);
+		}
 		m.setUser(user);
+		
+		Date date = new Date();
+		m.setDateLastAction(date);
+		
 		System.out.println("*");
 		System.out.println("********* DEBUG MISSION : "+m.toString());
 		System.out.println("*");
 		String message = "";
     	if(m.getTitre() == null || m.getTitre().isEmpty()
         		|| m.getDescription() == null || m.getDescription().isEmpty()
-        		|| m.getEtat() == null || m.getEtat().isEmpty()
+        		|| m.getEtat() == null
         		|| m.getAdresse() == null || m.getAdresse().isEmpty()){
     		redirectAttributes.addFlashAttribute("message", "ERREUR : tous les champs doivent être remplis ...");
         	return "redirect:/Missions";

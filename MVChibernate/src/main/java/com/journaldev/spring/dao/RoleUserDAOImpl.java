@@ -51,7 +51,7 @@ public class RoleUserDAOImpl implements RoleUserDAO
 	@Override
 	public RoleUser getRoleUserByCouple(String username, String roleName) {
 		Session session = this.sessionFactory.getCurrentSession();      
-		Query query = (org.hibernate.Query) session.createQuery("from RoleUser where username=:username and roleName=:roleName");
+		Query query = session.createQuery("from RoleUser where username=:username and roleName=:roleName");
 		query.setParameter("username", username);
 		query.setParameter("roleName", roleName);
 		RoleUser ru = (RoleUser) query.uniqueResult();

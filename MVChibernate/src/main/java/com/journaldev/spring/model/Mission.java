@@ -1,6 +1,9 @@
 package com.journaldev.spring.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +17,7 @@ import javax.persistence.Table;
 /**
  * Class qui représente le Bean Mission.
  * Cette class va auto générer la table qui lui correspond en BDD (mission)
- * ATTENTION : il y a une jointure avec la table USER.
+ * ATTENTION : il y a une jointure avec la table USER et ETAT.
  */
 @Entity
 @Table(name="MISSION")
@@ -27,35 +30,38 @@ public class Mission
 	private int id;
 	private String titre;
 	private String description;
-	private String etat;
-	private Calendar dateLastAction;
+	private Date dateLastAction;
 	private String adresse;
 	/*private double longitude;
 	private double latitude;*/
+	
+	/*@ManyToOne
+	@JoinColumn(name="idEtat")
+	private Etat etat;*/
+	private String etat;
 	
 	@ManyToOne
     @JoinColumn(name="idUser")
     private User user;
 	
-	
-	
-	
+
+
 	public Mission() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Mission(int id, String titre, String description, String etat,
-			Calendar dateLastAction, String adresse, User user) {
+	public Mission(int id, String titre, String description,
+			Date dateLastAction, String adresse, String etat, User user) {
 		super();
 		this.id = id;
 		this.titre = titre;
 		this.description = description;
-		this.etat = etat;
 		this.dateLastAction = dateLastAction;
 		this.adresse = adresse;
+		this.etat = etat;
 		this.user = user;
 	}
+
 
 	/* ---------- GETTERS / SETTERS ---------- */
 	public int getId() {
@@ -90,12 +96,13 @@ public class Mission
 		this.etat = etat;
 	}
 
-	public Calendar getDateLastAction() {
+	public Date getDateLastAction() {
 		return dateLastAction;
 	}
 
-	public void setDateLastAction(Calendar dateLastAction) {
+	public Date setDateLastAction(Date dateLastAction) {
 		this.dateLastAction = dateLastAction;
+		return dateLastAction;
 	}
 
 	public String getAdresse() {
@@ -118,7 +125,7 @@ public class Mission
 	@Override
 	public String toString() {
 		return "Mission [id=" + id + ", titre=" + titre + ", description="
-				+ description + ", etat=" + etat + ", dateLastAction="
+				+ description + ", dateLastAction="
 				+ dateLastAction + ", adresse=" + adresse + ", user=" + user
 				+ "]";
 	}
