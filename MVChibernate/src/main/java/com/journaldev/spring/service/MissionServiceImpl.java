@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.journaldev.spring.dao.MissionDAO;
 import com.journaldev.spring.model.Mission;
+import com.journaldev.spring.model.User;
 
 @Service("missionService")
 public class MissionServiceImpl implements MissionService {
@@ -47,6 +48,12 @@ public class MissionServiceImpl implements MissionService {
 	@Transactional
 	public void removeMission(int id) {
 		this.missionDAO.removeMission(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Mission> listMissionsByUserId(User userId) {
+		return this.missionDAO.listMissionsByUserId(userId);
 	}
 
 }

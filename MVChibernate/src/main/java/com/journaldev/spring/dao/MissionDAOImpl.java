@@ -1,14 +1,24 @@
 package com.journaldev.spring.dao;
 
+import java.util.ArrayList;
 import java.util.List;
  
+
+
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
  
+
+
+
 import com.journaldev.spring.model.Mission;
+import com.journaldev.spring.model.Partenaire;
+import com.journaldev.spring.model.User;
 
 @Repository("missionDAO")
 public class MissionDAOImpl implements MissionDAO {
@@ -39,11 +49,16 @@ public class MissionDAOImpl implements MissionDAO {
     @Override
     public List<Mission> listMissions() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Mission> MissionsList = session.createQuery("from Mission").list();
+        List<Mission> MissionsList = session.createQuery("from Mission group by adresse").list();
+        List<Mission> LastMissionList = new ArrayList<Mission>();
         for(Mission m : MissionsList){
-            logger.info("Mission List::"+m);
+        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse)");
+    		query.setParameter("adresse", m.getAdresse());
+    		Mission mission = (Mission) query.uniqueResult();
+    		System.out.println("MISSION !!!! "+mission);
+    		LastMissionList.add(mission);
         }
-        return MissionsList;
+        return LastMissionList;
     }
  
     @Override
@@ -63,5 +78,22 @@ public class MissionDAOImpl implements MissionDAO {
         }
         logger.info("Mission deleted successfully, Mission details="+m);
     }
+
+	@Override
+	public List<Mission> listMissionsByUserId(User userId) {
+		Session session = this.sessionFactory.getCurrentSession();
+        List<Mission> MissionsList = session.createQuery("from Mission group by adresse").list();
+        List<Mission> LastMissionList = new ArrayList<Mission>();
+        for(Mission m : MissionsList){
+        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse) and user=:userId");
+    		query.setParameter("adresse", m.getAdresse());
+    		query.setParameter("userId", userId);
+    		Mission mission = (Mission) query.uniqueResult();
+    		System.out.println("MISSION !!!! "+mission);
+    		LastMissionList.add(mission);
+        }
+        return LastMissionList;
+	}
  
+    
 }

@@ -1,8 +1,10 @@
 package com.journaldev.spring.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,8 @@ import com.journaldev.spring.model.Mission;
 import com.journaldev.spring.model.User;
 import com.journaldev.spring.service.EtatService;
 import com.journaldev.spring.service.MissionService;
+import com.journaldev.spring.service.RoleService;
+import com.journaldev.spring.service.RoleUserService;
 import com.journaldev.spring.service.UserService;
 
 @Controller
@@ -25,6 +29,7 @@ public class MissionController
 	private MissionService missionService;
 	private EtatService etatService;
 	private UserService userService;
+	private RoleUserService roleUserService;
 	
 	@Autowired
 	public void setMissionService(MissionService ms) {
@@ -38,15 +43,44 @@ public class MissionController
 	public void setUserService(UserService us) {
 		this.userService = us;
 	}
+	@Autowired
+	public void setRoleUserService(RoleUserService rus) {
+		this.roleUserService = rus;
+	}
 	
 	
 	@RequestMapping(value="/Missions", method = RequestMethod.GET)
 	public String listMissions(Model model)
 	{
+		String actualUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("*");
+		System.out.println("* USER CONNECTED : " + actualUsername);
+		System.out.println("*");
+		
+		User user = userService.getUserByName(actualUsername);
+		int userId = user.getId();
+		
+		System.out.println("***************");
+		List<String> rolesNames = roleUserService.getRoleUserByUsername(actualUsername);
+		System.out.println(rolesNames);
+		System.out.println("***************");
+		
 		model.addAttribute("Mission", new Mission());
-		model.addAttribute("listMissions", this.missionService.listMissions());
 		model.addAttribute("listEtats", this.etatService.listEtats());
 		model.addAttribute("listUsers", this.userService.listUsers());
+		if(rolesNames.contains("ROLE_ADMIN"))
+		{
+			model.addAttribute("listMissions", this.missionService.listMissions());
+		}
+		else
+		{
+			model.addAttribute("listMissions", this.missionService.listMissionsByUserId(user));
+		}
+		
+		/*model.addAttribute("Mission", new Mission());
+		model.addAttribute("listMissions", this.missionService.listMissions());
+		model.addAttribute("listEtats", this.etatService.listEtats());
+		model.addAttribute("listUsers", this.userService.listUsers());*/
 		
 		return "mission";
 	}

@@ -1,5 +1,6 @@
 package com.journaldev.spring.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -76,6 +77,20 @@ public class RoleUserDAOImpl implements RoleUserDAO
 		RoleUser r = (RoleUser) session.load(RoleUser.class, new Integer(id));
 		logger.info("Role loaded successfully, Role details="+r);
 		return r;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getRoleUserByUsername(String username) {
+		Session session = this.sessionFactory.getCurrentSession();
+        List<RoleUser> RolesList = session.createQuery("from RoleUser where username=:username").setParameter("username", username).list();
+        List<String> nameList = new ArrayList<String>();
+        for(RoleUser r : RolesList){
+        	nameList.add(r.getRoleName());
+            //logger.info("Role List::"+r);
+        }
+        return nameList;
 	}
 
 

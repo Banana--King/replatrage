@@ -15,12 +15,12 @@
 	<h2>${message}</h2>
 </c:if>
 
-<sec:authorize access="hasRole('ROLE_ADMIN')">
+<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
 	<h1>
 	    Add a Partenaire
 	</h1>
 	 
-	 <c:url var="addAction" value="/Partenaire/add" ></c:url>
+	<c:url var="addAction" value="/Partenaire/add" ></c:url>
 	 
 	<form:form action="${addAction}" commandName="Partenaire">
 	<table>

@@ -59,6 +59,13 @@ public class RoleUserServiceImpl implements RoleUserService {
 	}
 
 
+	@Override
+	@Transactional
+	public List<String> getRoleUserByUsername(String username) {
+		return this.roleUserDAO.getRoleUserByUsername(username);
+	}
+
+
 	/*@Override
 	public List<Role> getAllRolesNames() {
 		return this.roleDAO.getAllRolesNames();
