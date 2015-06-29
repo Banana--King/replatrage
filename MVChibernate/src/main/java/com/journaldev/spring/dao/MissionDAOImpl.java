@@ -39,7 +39,7 @@ public class MissionDAOImpl implements MissionDAO {
     @Override
     public List<Mission> listMissions() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Mission> MissionsList = session.createQuery("from Mission order by dateLastAction desc").list();
+        List<Mission> MissionsList = session.createQuery("from Mission").list();
         for(Mission m : MissionsList){
             logger.info("Mission List::"+m);
         }
@@ -64,5 +64,4 @@ public class MissionDAOImpl implements MissionDAO {
         logger.info("Mission deleted successfully, Mission details="+m);
     }
  
-    
 }

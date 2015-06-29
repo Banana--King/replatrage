@@ -7,10 +7,9 @@
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     
     <!-- toutes les infos et les confs sur la sécurité sont ici ! -->
-    <http pattern="/login" security="none"></http>
     <http use-expressions="true">
         <intercept-url pattern="/**" access="isAuthenticated()"/> <!-- vérifie si on est enthentifié pour toutes les URLs -->
-        <form-login login-page="/login" default-target-url="/Users" authentication-failure-url="/login"/>  <!-- formulaire de login -->
+        <form-login default-target-url="/Users" always-use-default-target="true"/>  <!-- formulaire de login -->
         <logout logout-url="/logout" /> <!-- URL de déconnexion utilisée par les JSP -->
         
         <!-- <form-login 
@@ -19,7 +18,7 @@
 			authentication-failure-url="/login?error" 
 			username-parameter="username"
 			password-parameter="password" />
-		<logout logout-success-url="/login?logout" /> -->
+		<logout logout-success-url="/login?logout" /> --> 
     </http>
     
     
@@ -31,67 +30,18 @@
 		<beans:property name="password" value="" />
 	</beans:bean>
 	
-    <!-- Hibernate 4 SessionFactory Bean definition -->
-	<beans:bean id="hibernate4AnnotatedSessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="annotatedClasses">
-			<beans:list>
-				<beans:value>com.journaldev.spring.model.User</beans:value>
-				<beans:value>com.journaldev.spring.model.RoleUser</beans:value>
-				<beans:value>com.journaldev.spring.model.Mission</beans:value>
-			</beans:list>
-		</beans:property>
-		<beans:property name="hibernateProperties">
-			<beans:props>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
-				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean>
-    
-    <!-- 
-    	<jdbc-user-service data-source-ref="dataSource"
-    			users-by-username-query="select * from user where username = ?"
-				authorities-by-username-query="select u.username, ur.authority from user u, user_role ur where u.idUser = ur.id_user and u.username = ? " /> -->
-   
-   <authentication-manager>
+    <authentication-manager>
 		<authentication-provider>
-		    <password-encoder ref="encoder" />
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select username,password,enabled from user where username=?"
-				authorities-by-username-query="select username, roleName from user_role where username =?" />
+				users-by-username-query="select username, password, enabled from user where username = ?"
+				authorities-by-username-query="select u.username, ur.authority from user u, user_roles ur where u.id = ur.user_id and u.username = ? " />
+				<!--  <password-encoder ref="encoder"></password-encoder> -->
 		</authentication-provider>
 	</authentication-manager>
 	
-	<!-- beans:bean id="userDAO" class="com.journaldev.spring.dao.UserDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="userDetailsService" class="com.journaldev.spring.service.UserDetailsServiceImpl">
-	    <beans:property name="userDAO" ref="userDAO"></beans:property>
-	</beans:bean>
-	<beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-	    <beans:property name="userDetailsService" ref="userDetailsService" ></beans:property>
-	    
-	</beans:bean>
-	
-	<beans:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
-	    <beans:property name="providers">
-	        <beans:list>
-	            <beans:ref local="daoAuthenticationProvider"/>
-	        </beans:list>
-	    </beans:property>
-	</beans:bean>
-	
-	<authentication-manager>
-	    <authentication-provider user-service-ref="userDetailsService">
-	        <password-encoder hash="md5"></password-encoder>
-	    </authentication-provider>
-	</authentication-manager> -->
-    <beans:bean id="encoder"
+    <!--beans:bean id="encoder"
         class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
-        <beans:constructor-arg name="strength" value="10"></beans:constructor-arg>
-    </beans:bean>
+        <beans:constructor-arg name="strength" value="11"></beans:constructor-arg>
+    </beans:bean-->
     
 </beans:beans>
