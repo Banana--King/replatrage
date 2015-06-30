@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ include file="/WEB-INF/views/includes.jsp" %>
 
 <html lang="fr">
   <head>
@@ -28,7 +27,8 @@
   <body>
 
     <div class="container">
-
+		connecté en tant que: <sec:authentication property="name"/> <sec:authentication property="authorities"/>
+		<a href="logout">Deconnexion</a>
       <%@ include file="/WEB-INF/views/nav.jsp" %>
       
       <h1>Page d'accueil !</h1>

@@ -52,8 +52,9 @@ public class MissionDAOImpl implements MissionDAO {
         List<Mission> MissionsList = session.createQuery("from Mission group by adresse").list();
         List<Mission> LastMissionList = new ArrayList<Mission>();
         for(Mission m : MissionsList){
-        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse)");
+        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse) and etat!=:etat");
     		query.setParameter("adresse", m.getAdresse());
+    		query.setParameter("etat", "cloture");
     		Mission mission = (Mission) query.uniqueResult();
     		System.out.println("MISSION !!!! "+mission);
     		LastMissionList.add(mission);
@@ -85,9 +86,10 @@ public class MissionDAOImpl implements MissionDAO {
         List<Mission> MissionsList = session.createQuery("from Mission group by adresse").list();
         List<Mission> LastMissionList = new ArrayList<Mission>();
         for(Mission m : MissionsList){
-        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse) and user=:userId");
+        	Query query = session.createQuery("from Mission where dateLastAction = (select MAX(dateLastAction) from Mission where adresse=:adresse) and user=:userId and etat!=:etat");
     		query.setParameter("adresse", m.getAdresse());
     		query.setParameter("userId", userId);
+    		query.setParameter("etat", "cloture");
     		Mission mission = (Mission) query.uniqueResult();
     		System.out.println("MISSION !!!! "+mission);
     		LastMissionList.add(mission);

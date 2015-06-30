@@ -109,6 +109,7 @@ public class MissionController
     		redirectAttributes.addFlashAttribute("message", "ERREUR : tous les champs doivent être remplis ...");
         	return "redirect:/Missions";
         }
+    	
     	m.setId(0);
 		if(m.getId() == 0){
             //new Mission, add it
