@@ -1,4 +1,4 @@
-<ul>
+<ul class="sidebar-menu">
 	<li><a href="/SpringMVCHibernate/">accueil</a></li>
 	<li><a href="/SpringMVCHibernate/Users">utilisateurs</a></li>
 	<!-- <li><a href="Roles">roles</a></li> -->
