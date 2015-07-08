@@ -33,7 +33,6 @@
 </head>
 <body>
 <section id="container">
-<div class="container">
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	
@@ -122,6 +121,8 @@
 	    </c:forEach>
 	    </table>
 	</c:if>
-</div>
+</section>
+</section>
+</section>
 </body>
 </html>

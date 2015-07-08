@@ -33,9 +33,8 @@
 </head>
 <body>
 <section id="container">
-<div class="container">
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	
 	
 	<section id="main-content">
@@ -79,6 +78,8 @@
 	        </td>
 	    </tr>
 	</form:form>
-</div>
+</section>
+</section>
+</section>
 </body>
 </html>

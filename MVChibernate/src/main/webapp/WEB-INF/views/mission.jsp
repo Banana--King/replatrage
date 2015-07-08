@@ -36,11 +36,10 @@
 <body>
 	<!-- container section start -->
 	<section id="container">
-		<div class="container">
-			<%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
-			<section id="main-content">
-				<section class="wrapper">
+		<%@ include file="/WEB-INF/views/header.jsp" %>
+		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+		<section id="main-content">
+			<section class="wrapper">
 				<div class="row">
 					<div class="col-lg-12">
 						<h3 class="page-header"><i class="fa fa-file-text-o"></i> Missions</h3>
@@ -232,7 +231,6 @@
                 
 		</section>
 		</section>
-	</div>
 </section>
 	
 	<script type="text/javascript">

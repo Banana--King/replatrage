@@ -18,23 +18,26 @@
 	<!-- font icon -->
 	<link href="<c:url value="/resources/css/elegant-icons-style.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/font-awesome.min.css" />" rel="stylesheet">
-	
-	<!-- Custom styles for this template -->
-	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/style-responsive.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/jquery-ui-1.10.4.min.css" />" rel="stylesheet">
-	
-   <!-- full calendar css-->
+	<!-- full calendar css-->
 	<link href="<c:url value="/resources/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/assets/fullcalendar/fullcalendar/fullcalendar.css" />" rel="stylesheet">
-	
-    <!-- easy pie chart-->
+	<!-- easy pie chart-->
 	<link href="<c:url value="/resources/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" />" rel="stylesheet" type="text/css" media="screen">
-
+	<!-- owl carousel -->
+	<link href="<c:url value="/resources/css/owl.carousel.css" />" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/resources/css/jquery-jvectormap-1.2.2.css" />" rel="stylesheet">
+		<!-- Custom styles for this template -->
+	<link href="<c:url value="/resources/css/fullcalendar.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/widgets.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/style-responsive.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/xcharts.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/jquery-ui-1.10.4.min.css" />" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="<c:url value="js/html5shiv.js"/>"></script>
-	<script src="<c:url value="js/respond.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/html5shiv.js"/>"></script>
+	<script src="<c:url value="/resources/js/respond.min.js"/>"></script>
+      <script src="<c:url value="/resources/js/lte-ie7.js"/>"></script>
 	<![endif]-->
 </head>
 <body style="background-color: white">

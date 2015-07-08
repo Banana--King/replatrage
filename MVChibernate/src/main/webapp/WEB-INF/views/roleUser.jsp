@@ -31,9 +31,8 @@
 </head>
 <body>
  <section id="container">
-<div class="container">
     <%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	<section id="main-content">
             <section class="wrapper">
 					<h3 class="page-header"><i class="fa fa-laptop"></i> Les droits </h3>
@@ -154,6 +153,8 @@
 	    </c:forEach>
 	    </table>
 	</c:if>
-</div>
+</section>
+</section>
+</section>
 </body>
 </html>
