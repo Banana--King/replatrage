@@ -162,6 +162,7 @@
                           		<table class="table table-striped table-advance table-hover">
 									<tbody>
 										<tr>
+											<th width="80">#</th>
 											<th width="120">Titre</th>
 											<th width="120">Etat</th>
 											<th width="120"><i class="fa fa-file-text-o"></i> Description</th>
@@ -177,6 +178,7 @@
 										<c:if test="${bla.id != 0}">
 										<c:if test="${bla.etat ne 'cloture'}">
 											<tr>
+												<td>${bla.id}</td>
 												<td>${bla.titre}</td>
 												<td>${bla.etat}</td>
 												<td>${bla.description}</td>
@@ -244,6 +246,7 @@
 		
 		var geocoder;
 		var map;
+		
 		// initialisation de la carte Google Map de départ
 		function initialiserCarte() {
 		  geocoder = new google.maps.Geocoder();
@@ -257,9 +260,9 @@
 		  // map-canvas est le conteneur HTML de la carte Google Map
 		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		  
-		  ajaxGetMissionAdresse();
+		  ajaxGetMissionsAdresses();
 		}
-		 
+
 		function TrouverAdresse(adresse) {
 		  // Récupération de l'adresse tapée dans le formulaire
 		  geocoder.geocode( { 'address': adresse}, function(results, status) {
@@ -291,7 +294,6 @@
 				url: "./Ajax",
 				success: function(response){
 					var list_adresse = response.split(";;;");
-					console.log(list_adresse);
 					$.each(list_adresse, function(index, adresse) {
 					    if(!adresse.trim()){/* on ne fait rien */}
 					    else{TrouverAdresse(adresse);}
@@ -302,6 +304,76 @@
 				}
 			});
 		}
+		//fonction qui récupère les missions en ajax
+		function ajaxGetMissionsAdresses()
+		{
+			$.ajax({
+				url: "./Ajax",
+				success: function(response){
+					var list_missions = response.split("$£%*");
+					
+					$.each(list_missions, function(index, mission) {
+						var mission_array = mission.split(";");
+						var adresse = mission_array[0];
+						var title = mission_array[1];
+						var description = mission_array[2];
+
+						console.log("adresse = "+adresse);
+						console.log("title = "+title);
+						console.log("description = "+description);
+					    if(!adresse.trim()){/* on ne fait rien */}
+					    else{FindAdressAndCreateMarker(adresse, title, description);}
+					});
+					
+				},
+				error: function(){
+					alert("erreur lors de la recherche des adresse ...");
+				}
+			});
+		}
+		function FindAdressAndCreateMarker(adresse, title, description) {
+			  // Récupération de l'adresse tapée dans le formulaire
+			  geocoder.geocode( { 'address': adresse}, function(results, status) {
+			    if (status == google.maps.GeocoderStatus.OK) {
+			      // Récupération des coordonnées GPS du lieu tapé dans le formulaire
+			      map.setCenter(results[0].geometry.location);
+			      var strposition = results[0].geometry.location+"";
+			      strposition=strposition.replace('(', '');
+			      strposition=strposition.replace(')', '');
+			      // Création du marqueur du lieu (épingle)
+			      var marker = new google.maps.Marker({
+			          map: map,
+			          position: results[0].geometry.location,
+			          title: title,
+			          description : description
+			      });
+
+
+					var contentString = '<div id="content">'+
+					      '<div id="siteNotice">'+
+					      '</div>'+
+					      '<h1 id="firstHeading" class="firstHeading">'+title+'</h1>'+
+					      '<div id="bodyContent">'+
+					      '<p>'+description+'</p>'+
+					      '<p><a href="https://www.google.fr/maps/place/'+adresse+'" target="_blank">'+adresse+'</a></p>'+
+					      '</div>'+
+					      '</div>';
+
+					var infowindow = new google.maps.InfoWindow({
+						content: contentString
+					  });
+					
+				      google.maps.event.addListener(marker, 'click', function() {
+				        infowindow.open(map,marker);
+				      });
+			    } else {
+			      $("#map-error").append("Adresse introuvable : "+ adresse +"<br/>");
+			      //alert(adresse);
+			      //alert(adresse.length);
+			      $("#map-error").show();
+			    }
+			  });
+			}
 	</script>
 	
     <script src="<c:url value="/resources/js/form-component.js" />"></script>
