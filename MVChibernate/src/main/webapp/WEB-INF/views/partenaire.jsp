@@ -101,7 +101,7 @@
 	<c:if test="${!empty listPartenaires}">
 	    <table class="table table-striped">
 	    <tr>
-	        <th width="80">Partenaire ID</th>
+	        
 	        <th width="120">Partenaire Name</th>
 	        <sec:authorize access="hasRole('ROLE_ADMIN')">
 	        	<th width="60">Edit</th>
@@ -110,7 +110,7 @@
 	    </tr>
 	    <c:forEach items="${listPartenaires}" var="Partenaire">
 	        <tr>
-	            <td>${Partenaire.id}</td>
+	           
 	            <td>${Partenaire.nom}</td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
 		            <td><a href="<c:url value='/Partenaire/edit/${Partenaire.id}' />" class="btn btn-primary">Edit</a></td>
@@ -123,5 +123,6 @@
 </section>
 </section>
 </section>
+
 </body>
 </html>

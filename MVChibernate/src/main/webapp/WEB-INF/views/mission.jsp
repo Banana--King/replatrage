@@ -162,7 +162,6 @@
                           		<table class="table table-striped table-advance table-hover">
 									<tbody>
 										<tr>
-											<th width="80">#</th>
 											<th width="120">Titre</th>
 											<th width="120">Etat</th>
 											<th width="120"><i class="fa fa-file-text-o"></i> Description</th>
@@ -178,7 +177,6 @@
 										<c:if test="${bla.id != 0}">
 										<c:if test="${bla.etat ne 'cloture'}">
 											<tr>
-												<td>${bla.id}</td>
 												<td>${bla.titre}</td>
 												<td>${bla.etat}</td>
 												<td>${bla.description}</td>
@@ -271,7 +269,6 @@
 		      var strposition = results[0].geometry.location+"";
 		      strposition=strposition.replace('(', '');
 		      strposition=strposition.replace(')', '');
-
 		      // Création du marqueur du lieu (épingle)
 		      var marker = new google.maps.Marker({
 		          map: map,
@@ -294,6 +291,7 @@
 				url: "./Ajax",
 				success: function(response){
 					var list_adresse = response.split(";;;");
+					console.log(list_adresse);
 					$.each(list_adresse, function(index, adresse) {
 					    if(!adresse.trim()){/* on ne fait rien */}
 					    else{TrouverAdresse(adresse);}

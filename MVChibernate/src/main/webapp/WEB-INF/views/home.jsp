@@ -9,7 +9,7 @@
 	<link rel="shortcut icon" href="../../assets/ico/favicon.png">
 	
 	<title>Home</title>
-	
+
 	<!-- Bootstrap core CSS -->
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	<!-- bootstrap theme -->
@@ -43,25 +43,21 @@
 <body style="background-color: white">
 	<!-- container section start -->
 	<section id="container" class="">
-		<div class="container">
 			<%@ include file="/WEB-INF/views/header.jsp" %>
 			
 			<!--main content start-->
 			<section id="main-content">
 				<section class="wrapper">
 					<h3 class="page-header"><i class="fa fa-laptop"></i> Accueil</h3>
-				
-                                       <a href="Users">  <img style="width: 256px ; height: 256px; "  src="http://www.icone-png.com/png/28/28370.png"/></a>
-                                <a href="RoleUsers"><img style="width: 256px ; height: 256px; "src="http://www.iconshock.com/img_jpg/IMPRESSIONS/networking/jpg/256/role_icon.jpg"/></a>
-                                 <a href="Partenaires"><img style="width: 256px ; height: 256px; "src="http://new.lesclownsstethoscopes.fr/sites/default/files/default_images/img_partenaire.png"/> </a>     
-                                 <a href="Etats"> <img style="width: 256px ; height: 256px; "src="http://myitforum.com/myitforumwp/wp-content/uploads/2014/01/Workflow-engine.png"/></a>
-                                 <a href="Missions"><img style="width: 256px ; height: 256px; "src="http://www.clker.com/cliparts/g/p/Q/h/v/0/mission-md.png"/>    </a>                          
-                                <a href="Export"><img style="width: 256px ; height: 256px; "src="http://www.publishyourarticles.net/wp-content/uploads/2015/06/Export-Stamp.jpg"/></a>
-                              
-                                </section>
+					<a title="Utiisateurs " href="Users">  <img style="width: 256px ; height: 256px; "  src="<c:url value='resources/images/28370.png' />"/></a>
+                    <a title="Role des utilisateurs" href="RoleUsers"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/role_icon.jpg' />"/></a>
+                    <a title="Partenaires" href="Partenaires"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/img_partenaire.png' />"/> </a>     
+                    <a title="Workflow" href="Etats"> <img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/Workflow-engine.png' />"/></a>
+                    <a title="Missions" href="Missions"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/mission-md.png' />" alt="missions"/>    </a>                          
+                    <a title="Exportation des missions " href="Export"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/Export-Stamp.jpg' />" alt="export"/></a>
+				</section>
 			</section>
-		</div> <!-- /container -->
-	</section>
+	</section><!-- /container -->
 	
     <!-- javascripts -->
 <!--    <script src="<c:url value="/resources/js/jquery.js" />"></script>

@@ -34,7 +34,7 @@
 <body>
 <section id="container">
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	
 	
 	<section id="main-content">
@@ -102,7 +102,7 @@
 	<c:if test="${!empty listEtats}">
 	    <table class="table table-striped">
 	    <tr>
-	        <th width="80">Etat ID</th>
+	        
 	        <th width="120">Etat Name</th>
 	        <sec:authorize access="hasRole('ROLE_ADMIN')">
 	        	<th width="60">Edit</th>
@@ -111,7 +111,7 @@
 	    </tr>
 	    <c:forEach items="${listEtats}" var="Etat">
 	        <tr>
-	            <td>${Etat.id}</td>
+	            
 	            <td>${Etat.nom}</td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
 		            <td><a href="<c:url value='/Etat/edit/${Etat.id}' />" class="btn btn-primary">Edit</a></td>

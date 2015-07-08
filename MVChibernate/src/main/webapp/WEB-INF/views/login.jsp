@@ -49,6 +49,7 @@
 					<input type="password" class="form-control" placeholder="Password" name='j_password'/>
 				</div>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                               
 			</div>	
 		</form>
       

@@ -8,49 +8,38 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-    <title>Utilisateur </title>
+     <title>Utilisateur </title>
 
-	
-	<!-- Bootstrap core CSS -->
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-	<!-- bootstrap theme -->
-	<link href="<c:url value="/resources/css/bootstrap-theme.css" />" rel="stylesheet">
-	<!--external css-->
-	<!-- font icon -->
-	<link href="<c:url value="/resources/css/elegant-icons-style.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/font-awesome.min.css" />" rel="stylesheet">
-	<!-- full calendar css-->
-	<link href="<c:url value="/resources/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/assets/fullcalendar/fullcalendar/fullcalendar.css" />" rel="stylesheet">
-	<!-- easy pie chart-->
-	<link href="<c:url value="/resources/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" />" rel="stylesheet" type="text/css" media="screen">
-	<!-- owl carousel -->
-	<link href="<c:url value="/resources/css/owl.carousel.css" />" rel="stylesheet" type="text/css">
-	<link href="<c:url value="/resources/css/jquery-jvectormap-1.2.2.css" />" rel="stylesheet">
-		<!-- Custom styles for this template -->
-	<link href="<c:url value="/resources/css/fullcalendar.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/widgets.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/style-responsive.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/xcharts.min.css" />" rel="stylesheet">
-	<link href="<c:url value="/resources/css/jquery-ui-1.10.4.min.css" />" rel="stylesheet">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="<c:url value="/resources/js/html5shiv.js"/>"></script>
-	<script src="<c:url value="/resources/js/respond.min.js"/>"></script>
-      <script src="<c:url value="/resources/js/lte-ie7.js"/>"></script>
-	<![endif]-->
+    <!-- Bootstrap core CSS -->
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="<c:url value="/resources/css/bootstrap-theme.css" />" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="<c:url value="/resources/css/elegant-icons-style.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/font-awesome.min.css" />" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style-responsive.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/jquery-ui-1.10.4.min.css" />" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="<c:url value="js/html5shiv.js"/>"></script>
+    <script src="<c:url value="js/respond.min.js"/>"></script>
+    <![endif]-->
 	</head>
 <body>
-<section id="container" class="">
+    <section id="container">
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	
 	
 	<section id="main-content">
             <section class="wrapper">
-					<h3 class="page-header"><i class="fa fa-laptop"></i> Utilisateurs </h3>
-			
+					<h3 class="page-header"><i class="fa fa-laptop"></i> Roles des utilisateurs </h3>
+			<h1>Gestion des utilisateurs </h1>
 	<c:if test="${!empty message}">
 		<c:if test="${fn:contains(message, 'SUCCES')}">
 	        <div class="alert alert-success">${message}</div>
@@ -153,22 +142,21 @@
 	<c:if test="${!empty listUsers}">
 	    <table class="table table-striped">
 	    <tr>
-	        <th width="80">User ID</th>
+	        
 	        <th width="120">User Name</th>
 	        <th width="120">User Prenom</th>
 	        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	        	<th width="60">Edit</th>
-	        	<th width="60">Delete</th>
+	        	<th width="120"><i class="icon_cogs"></i>Actions</th>
 	        </sec:authorize>
 	    </tr>
 	    <c:forEach items="${listUsers}" var="User">
 	        <tr>
-	            <td>${User.id}</td>
+	            
 	            <td>${User.nom}</td>
 	            <td>${User.prenom}</td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
-		            <td><a href="<c:url value='/User/edit/${User.id}' />"class="btn btn-primary" >Edit</a></td>
-		            <td><a href="<c:url value='/User/remove/${User.id}' />"class="btn btn-danger">Delete</a></td>
+		            <td><a href="<c:url value='/User/edit/${User.id}' />"class="btn btn-primary" >Edit</a>
+		            <a href="<c:url value='/User/remove/${User.id}' />"class="btn btn-danger">Delete</a></td>
 	            </sec:authorize>
 	        </tr>
 	    </c:forEach>

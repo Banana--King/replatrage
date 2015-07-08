@@ -31,8 +31,9 @@
 </head>
 <body>
  <section id="container">
+
     <%@ include file="/WEB-INF/views/header.jsp" %>
-	<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
 	<section id="main-content">
             <section class="wrapper">
 					<h3 class="page-header"><i class="fa fa-laptop"></i> Les droits </h3>
@@ -132,7 +133,7 @@
 	<c:if test="${!empty listRoleUsers}">
 	    <table class="table table-striped">
 	    <tr>
-	        <th width="80">Role ID</th>
+	        
 	        <th width="80">User Name</th>
 	        <th width="120">Role Name</th>
 	        <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -142,7 +143,7 @@
 	    </tr>
 	    <c:forEach items="${listRoleUsers}" var="RoleUser">
 	        <tr>
-	            <td>${RoleUser.id}</td>
+	            
 	            <td>${RoleUser.username}</td>
 	            <td>${RoleUser.roleName}</td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
