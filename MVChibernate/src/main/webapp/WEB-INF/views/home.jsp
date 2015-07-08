@@ -37,49 +37,57 @@
 	<script src="<c:url value="js/respond.min.js"/>"></script>
 	<![endif]-->
 </head>
-<body>
+<body style="background-color: white">
 	<!-- container section start -->
 	<section id="container" class="">
 		<div class="container">
 			<%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+			
 			<!--main content start-->
 			<section id="main-content">
 				<section class="wrapper">
 					<h3 class="page-header"><i class="fa fa-laptop"></i> Accueil</h3>
-				</section>
+				
+                                       <a href="Users">  <img style="width: 256px ; height: 256px; "  src="http://www.icone-png.com/png/28/28370.png"/></a>
+                                <a href="RoleUsers"><img style="width: 256px ; height: 256px; "src="http://www.iconshock.com/img_jpg/IMPRESSIONS/networking/jpg/256/role_icon.jpg"/></a>
+                                 <a href="Partenaires"><img style="width: 256px ; height: 256px; "src="http://new.lesclownsstethoscopes.fr/sites/default/files/default_images/img_partenaire.png"/> </a>     
+                                 <a href="Etats"> <img style="width: 256px ; height: 256px; "src="http://myitforum.com/myitforumwp/wp-content/uploads/2014/01/Workflow-engine.png"/></a>
+                                 <a href="Missions"><img style="width: 256px ; height: 256px; "src="http://www.clker.com/cliparts/g/p/Q/h/v/0/mission-md.png"/>    </a>                          
+                                <a href="Export"><img style="width: 256px ; height: 256px; "src="http://www.publishyourarticles.net/wp-content/uploads/2015/06/Export-Stamp.jpg"/></a>
+                              
+                                </section>
 			</section>
 		</div> <!-- /container -->
 	</section>
 	
     <!-- javascripts -->
-    <script src="<c:url value="/resources/js/jquery.js" />"></script>
+<!--    <script src="<c:url value="/resources/js/jquery.js" />"></script>
     <script src="<c:url value="/resources/js/jquery-ui-1.10.4.min.js" />"></script>
     <script src="<c:url value="/resources/js/jquery-1.8.3.min.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.9.2.custom.min.js" />"></script>
-    <!-- bootstrap -->
+     bootstrap 
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-    <!-- nice scroll -->
+     nice scroll 
     <script src="<c:url value="/resources/js/jquery.scrollTo.min.js" />"></script>
     <script src="<c:url value="/resources/js/jquery.nicescroll.js" />" type="text/javascript"></script>
-    <!-- charts scripts -->
+     charts scripts 
     <script src="<c:url value="/resources/assets/jquery-knob/js/jquery.knob.js" />"></script>
     <script src="<c:url value="/resources/js/jquery.sparkline.js" />" type="text/javascript"></script>
     <script src="<c:url value="/resources/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js" />"></script>
     <script src="<c:url value="/resources/js/owl.carousel.js" />"></script>
-    <!-- jQuery full calendar -->
+     jQuery full calendar 
     <script src="<c:url value="/resources/js/fullcalendar.min.js" />"></script>
     <script src="<c:url value="/resources/assets/fullcalendar/fullcalendar/fullcalendar.js" />"></script>
-    <!--script for this page only-->
+    script for this page only
     <script src="<c:url value="/resources/js/calendar-custom.js" />"></script>
     <script src="<c:url value="/resources/js/jquery.rateit.min.js" />" type="text/javascript"></script>
-    <!-- custom select -->
+     custom select 
     <script src="<c:url value="/resources/js/jquery.customSelect.min.j" />"></script>
     <script src="<c:url value="/resources/assets/chart-master/Chart.js" />" type="text/javascript"></script>
    
-    <!--custome script for all page-->
+    custome script for all page
     <script src="<c:url value="/resources/js/scripts.js" />"></script>
-    <!-- custom script for this page-->
+     custom script for this page
     <script src="js/sparkline-chart.js"></script>
     <script src="js/easy-pie-chart.js"></script>
 	<script src="js/jquery-jvectormap-1.2.2.min.js"></script>
@@ -140,6 +148,6 @@ $(function(){
 
 
 
-</script>
+</script>-->
 </body>
 </html>

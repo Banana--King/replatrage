@@ -52,7 +52,7 @@
 				</div>
 				<div class="row">
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<div class="col-lg-6">
+					<div class="col-lg-4 col-md-12">
 						<section class="panel">
 							<header class="panel-heading"> Cr&eacute;er une mission </header>
 							<div class="panel-body">
@@ -154,29 +154,10 @@
 					</div>
 					</sec:authorize>
 					
-			    	<div class="col-lg-9 col-md-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2><i class="fa fa-map-marker red"></i><strong>Carte</strong></h2>
-								<div class="panel-actions">
-									<a href="#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
-									<a href="#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
-									<a href="#" class="btn-close"><i class="fa fa-times"></i></a>
-								</div>	
-							</div>
-							<div class="panel-body-map">
-							<div id="map-error" class="alert alert-danger"></div>
-							<div id="map-canvas" style="height:380px;"></div>
-							</div>
-		
-						</div>
-					</div>
-                </div>
                 
 		<c:if test="${empty Mission.titre}">
 			<c:if test="${!empty listMissions}">
-				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-8 col-md-12">
 						<section class="panel">
 							<header class="panel-heading"> Liste des missions </header>
                           		<table class="table table-striped table-advance table-hover">
@@ -225,9 +206,30 @@
 							</table>
 						</section>
 					</div>
-				</div>
 				</c:if>
 				</c:if>
+				
+				</div> <!-- row end -->
+				<div class="row">
+			    	<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h2><i class="fa fa-map-marker red"></i><strong>Carte</strong></h2>
+								<div class="panel-actions">
+									<a href="#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+									<a href="#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+									<a href="#" class="btn-close"><i class="fa fa-times"></i></a>
+								</div>	
+							</div>
+							<div class="panel-body-map">
+							<div id="map-error" class="alert alert-danger"></div>
+							<div id="map-canvas" style="height:380px;"></div>
+							</div>
+		
+						</div>
+					</div>
+                </div> <!--  row end -->
+                
 		</section>
 		</section>
 	</div>
