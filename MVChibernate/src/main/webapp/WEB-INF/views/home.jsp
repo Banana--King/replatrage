@@ -91,7 +91,7 @@
 			<div class="col-md-4">
 				<a title="Etats" href="Etats">  
 					<figure class="effect-marley">
-						<img style="height:30%" src="<c:url value='resources/images/Workflow-engine.png' />" alt="" class="img-responsive"/>
+						<img style="height:30%" src="<c:url value='resources/images/Workflow-engine-transparent.png' />" alt="" class="img-responsive"/>
 						<figcaption>
 							<h4>Etats</h4>
 							<p>Cette page vous permettra de créer de nouveaux etats pour les missions</p>		
@@ -113,7 +113,7 @@
 			<div class="col-md-4">
 				<a title="Export" href="Export">  
 					<figure class="effect-marley">
-						<img style="height:30%" src="<c:url value='resources/images/Export-Stamp.jpg' />" alt="" class="img-responsive"/>
+						<img style="height:30%" src="<c:url value='resources/images/Export-Stamp.png' />" alt="" class="img-responsive"/>
 						<figcaption>
 							<h4>Export</h4>
 							<p>Exportation des missions</p>				
