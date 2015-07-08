@@ -49,7 +49,7 @@
 	    </c:if>
 	</c:if>
 	
-	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+	<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'PARTNER_MANAGER'])">
 		<h2>
 		    Ajouter un partenaire
 		</h2>
@@ -103,7 +103,7 @@
 	    <tr>
 	        
 	        <th width="120">Partenaire Name</th>
-	        <sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'PARTNER_MANAGER'])">
 	        	<th width="60">Edit</th>
 	        	<th width="60">Delete</th>
 	        </sec:authorize>
@@ -112,7 +112,7 @@
 	        <tr>
 	           
 	            <td>${Partenaire.nom}</td>
-	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'PARTNER_MANAGER'])">
 		            <td><a href="<c:url value='/Partenaire/edit/${Partenaire.id}' />" class="btn btn-primary">Edit</a></td>
 		            <td><a href="<c:url value='/Partenaire/remove/${Partenaire.id}' />"class="btn btn-danger" >Delete</a></td>
 	            </sec:authorize>

@@ -50,7 +50,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'ADD_MISSION', 'EDIT_MISSION'])">
 					<div class="col-lg-4 col-md-12">
 						<section class="panel">
 							<header class="panel-heading"> Cr&eacute;er une mission </header>
@@ -139,12 +139,12 @@
 
 				            <c:if test="${!empty Mission.titre}">
 				                <input type="submit"
-				                    value="<spring:message text="Edit Mission"/>"  class="btn btn-warning"/>
+				                    value="<spring:message text="Modifier"/>"  class="btn btn-warning"/>
 				                    
 				            </c:if>
 				            <c:if test="${empty Mission.titre}">
 				                <input type="submit"
-				                    value="<spring:message text="Add Mission"/>"  class="btn btn-primary"/>
+				                    value="<spring:message text="Ajouter"/>"  class="btn btn-primary"/>
 				            </c:if>
 
 								</form:form>
@@ -193,7 +193,7 @@
 													</c:otherwise>
 													</c:choose>
 												</td>
-											<sec:authorize access="hasRole('ROLE_ADMIN')">
+											<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'EDIT_MISSION'])">
 												<td><a href="<c:url value='/Mission/edit/${bla.id}' />" >Edit</a></td>
 											</sec:authorize>
 											</tr>
@@ -230,7 +230,7 @@
                 </div> <!--  row end -->
                 
 		</section>
-		</section>
+	</section>
 </section>
 	
 	<script type="text/javascript">

@@ -50,7 +50,7 @@
 	    </c:if>
 	</c:if>
 	
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'WORKFLOW_MANAGER'])">
 		<h2>
 		    Ajouter un état
 		</h2>
@@ -104,7 +104,7 @@
 	    <tr>
 	        
 	        <th width="120">Etat Name</th>
-	        <sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'WORKFLOW_MANAGER'])">
 	        	<th width="60">Edit</th>
 	        	<th width="60">Delete</th>
 	        </sec:authorize>
@@ -113,7 +113,7 @@
 	        <tr>
 	            
 	            <td>${Etat.nom}</td>
-	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'WORKFLOW_MANAGER'])">
 		            <td><a href="<c:url value='/Etat/edit/${Etat.id}' />" class="btn btn-primary">Edit</a></td>
 		            <td><a href="<c:url value='/Etat/remove/${Etat.id}' />" class="btn btn-danger" >Delete</a></td>
 	            </sec:authorize>

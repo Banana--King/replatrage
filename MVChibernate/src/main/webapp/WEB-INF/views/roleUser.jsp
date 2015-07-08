@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-     <title>Gestion des partenaires </title>
+     <title>Gestion des Droits </title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -37,7 +37,6 @@
 	<section id="main-content">
             <section class="wrapper">
 					<h3 class="page-header"><i class="fa fa-laptop"></i> Les droits </h3>
-			<h1>Gestion des utilisateurs </h1>
 	
 	<c:if test="${!empty message}">
 		<c:if test="${fn:contains(message, 'SUCCES')}">
@@ -48,10 +47,8 @@
 	    </c:if>
 	</c:if>
 	
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<h2>
-		   Ajouter des droits
-		</h2>
+	<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'ROLE_MANAGER'])">
+		<h2> Ajouter des droits </h2>
 		 
 		 <c:url var="addAction" value="/RoleUser/add" ></c:url>
 		 
@@ -146,7 +143,7 @@
 	            
 	            <td>${RoleUser.username}</td>
 	            <td>${RoleUser.roleName}</td>
-	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'ROLE_MANAGER'])">
 		            <td><a href="<c:url value='/RoleUser/edit/${RoleUser.id}' />" class="btn btn-primary">Edit</a></td>
 		            <td><a href="<c:url value='/RoleUser/remove/${RoleUser.id}' />" class="btn btn-danger">Delete</a></td>
 	            </sec:authorize>

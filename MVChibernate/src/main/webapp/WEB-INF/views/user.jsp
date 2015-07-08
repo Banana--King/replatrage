@@ -32,110 +32,91 @@
 	</head>
 <body>
     <section id="container">
-	<%@ include file="/WEB-INF/views/header.jsp" %>
-			<%@ include file="/WEB-INF/views/sidebar.jsp" %>
-	
-	
-	<section id="main-content">
+		<%@ include file="/WEB-INF/views/header.jsp" %>
+		<%@ include file="/WEB-INF/views/sidebar.jsp" %>
+		<section id="main-content">
             <section class="wrapper">
-					<h3 class="page-header"><i class="fa fa-laptop"></i> Roles des utilisateurs </h3>
-			<h1>Gestion des utilisateurs </h1>
-	<c:if test="${!empty message}">
-		<c:if test="${fn:contains(message, 'SUCCES')}">
-	        <div class="alert alert-success">${message}</div>
-	    </c:if>
-	    <c:if test="${fn:contains(message, 'ERREUR')}">
-	        <div class="alert alert-danger">${message}</div>
-	    </c:if>
-	</c:if>
-	
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<h2>
-		    Ajouter un utilisateur 
-		</h2>
+				<h3 class="page-header"><i class="fa fa-laptop"></i> Gestion des utilisateurs </h3>
+				<c:if test="${!empty message}">
+					<c:if test="${fn:contains(message, 'SUCCES')}">
+				        <div class="alert alert-success">${message}</div>
+				    </c:if>
+				    <c:if test="${fn:contains(message, 'ERREUR')}">
+				        <div class="alert alert-danger">${message}</div>
+				    </c:if>
+				</c:if>
+				<sec:authorize access="hasAnyRole(['ROLE_ADMIN', 'ADD_USER', 'EDIT_USER'])">
+					<h2> Ajouter un utilisateur  </h2>
+		 			<c:url var="addAction" value="/User/add" ></c:url>
 		 
-		 <c:url var="addAction" value="/User/add" ></c:url>
-		 
-		<form:form action="${addAction}" commandName="User">
-		<table>
-		    <c:if test="${!empty User.nom}">
-		    <tr>
-		        <td>
-		            <form:label path="id">
-		                <spring:message text="ID"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:input path="id" readonly="true" size="8"  disabled="true" />
-		            <form:hidden path="id" />
-		        </td> 
-		    </tr>
-		    </c:if>
-		    <tr>
-		        <td>
-		            <form:label path="nom">
-		                <spring:message text="nom"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:input class="form-control" path="nom" />
-		        </td> 
-		    </tr>
-		    <tr>
-		        <td>
-		            <form:label path="prenom">
-		                <spring:message text="prenom"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:input class="form-control" path="prenom" />
-		        </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <form:label path="username">
-		                <spring:message text="username"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:input class="form-control" path="username" />
-		        </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <form:label path="password">
-		                <spring:message text="password"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:password class="form-control" path="password" />
-		        </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <form:label path="enabled">
-		                <spring:message text="enabled"/>
-		            </form:label>
-		        </td>
-		        <td>
-		            <form:checkbox path="enabled" />
-		        </td>
-		    </tr>
-		    <tr>
-		        <td colspan="2">
-		            <c:if test="${!empty User.nom}">
-		                <input class="btn btn-default" type="submit"
-		                    value="<spring:message text="Edit User"/>" />
-		            </c:if>
-		            <c:if test="${empty User.nom}">
-		                <input class="btn btn-default" type="submit"
-		                    value="<spring:message text="Add User"/>" />
-		            </c:if>
-		        </td>
-		    </tr>
-		</table>  
-		</form:form>
-	</sec:authorize>
+					<form:form action="${addAction}" commandName="User">
+						<table>
+						<c:if test="${!empty User.nom}">
+						    <tr>
+						        <td>
+						            <form:label path="id"> <spring:message text="ID"/> </form:label>
+						        </td>
+						        <td>
+						            <form:input path="id" readonly="true" size="8"  disabled="true" />
+						            <form:hidden path="id" />
+						        </td> 
+						    </tr>
+						    </c:if>
+						    <tr>
+						        <td>
+						            <form:label path="nom"> <spring:message text="nom"/> </form:label>
+						        </td>
+						        <td>
+						            <form:input class="form-control" path="nom" />
+						        </td> 
+						    </tr>
+						    <tr>
+						        <td>
+						            <form:label path="prenom"> <spring:message text="prenom"/> </form:label>
+						        </td>
+						        <td>
+						            <form:input class="form-control" path="prenom" />
+						        </td>
+						    </tr>
+						    <tr>
+						        <td>
+						            <form:label path="username"> <spring:message text="username"/> </form:label>
+						        </td>
+						        <td>
+						            <form:input class="form-control" path="username" />
+						        </td>
+						    </tr>
+						    <tr>
+						        <td>
+						            <form:label path="password"> <spring:message text="password"/> </form:label>
+						        </td>
+						        <td>
+						            <form:password class="form-control" path="password" />
+						        </td>
+						    </tr>
+						    <tr>
+						        <td>
+						            <form:label path="enabled"> <spring:message text="enabled"/> </form:label>
+						        </td>
+						        <td>
+						            <form:checkbox path="enabled" />
+						        </td>
+						    </tr>
+						    <tr>
+						        <td colspan="2">
+						            <c:if test="${!empty User.nom}">
+						                <input class="btn btn-default" type="submit"
+						                    value="<spring:message text="Edit User"/>" />
+						            </c:if>
+						            <c:if test="${empty User.nom}">
+						                <input class="btn btn-default" type="submit"
+						                    value="<spring:message text="Add User"/>" />
+						            </c:if>
+						        </td>
+						    </tr>
+						</table>  
+					</form:form>
+				</sec:authorize>
 	
 	<br>
 	<h3>Users List</h3>
@@ -145,7 +126,7 @@
 	        
 	        <th width="120">User Name</th>
 	        <th width="120">User Prenom</th>
-	        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	        <sec:authorize access="hasAnyRole">
 	        	<th width="120"><i class="icon_cogs"></i>Actions</th>
 	        </sec:authorize>
 	    </tr>
@@ -155,15 +136,21 @@
 	            <td>${User.nom}</td>
 	            <td>${User.prenom}</td>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
-		            <td><a href="<c:url value='/User/edit/${User.id}' />"class="btn btn-primary" >Edit</a>
-		            <a href="<c:url value='/User/remove/${User.id}' />"class="btn btn-danger">Delete</a></td>
+		            <td>
+	            		<sec:authorize access="hasRole('EDIT_USER')">
+			            	<a href="<c:url value='/User/edit/${User.id}' />"class="btn btn-primary" >Modifier</a>
+	            		</sec:authorize>
+	           			<sec:authorize access="hasRole('DELETE_USER')">
+			            	<a href="<c:url value='/User/remove/${User.id}' />"class="btn btn-danger">Supprimer</a>
+	           			</sec:authorize>
+		            </td>
 	            </sec:authorize>
 	        </tr>
 	    </c:forEach>
 	    </table>
 	</c:if>
-            </section>
-            </section>
-                        </section>
+</section>
+</section>
+</section>
 </body>
 </html>
