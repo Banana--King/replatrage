@@ -33,6 +33,11 @@
 	<link href="<c:url value="/resources/css/style-responsive.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/xcharts.min.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/jquery-ui-1.10.4.min.css" />" rel="stylesheet">
+	
+	<!-- day -->
+	<link href="<c:url value="/resources/day/css/animate.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/day/css/style.css" />" rel="stylesheet">
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="<c:url value="/resources/js/html5shiv.js"/>"></script>
@@ -45,108 +50,93 @@
 	<section id="container" class="">
 			<%@ include file="/WEB-INF/views/header.jsp" %>
 			
-			<!--main content start-->
-			<section id="main-content">
-				<section class="wrapper">
-					<h3 class="page-header"><i class="fa fa-laptop"></i> Accueil</h3>
-					<a title="Utiisateurs " href="Users">  <img style="width: 256px ; height: 256px; "  src="<c:url value='resources/images/28370.png' />"/></a>
-                    <a title="Role des utilisateurs" href="RoleUsers"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/role_icon.jpg' />"/></a>
-                    <a title="Partenaires" href="Partenaires"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/img_partenaire.png' />"/> </a>     
-                    <a title="Workflow" href="Etats"> <img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/Workflow-engine.png' />"/></a>
-                    <a title="Missions" href="Missions"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/mission-md.png' />" alt="missions"/>    </a>                          
-                    <a title="Exportation des missions " href="Export"><img style="width: 256px ; height: 256px; "src="<c:url value='resources/images/Export-Stamp.jpg' />" alt="export"/></a>
-				</section>
-			</section>
+	<div class="gallery">
+		<div class="container">		
+			<div class="col-md-4">
+				<a title="Utiisateurs " href="Users">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/28370.png' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Utilisateurs</h4>
+							<p>Cette page vous permettra de gérer les utilisateurs</p>				
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a title="Role des utilisateurs " href="Users">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/role_icon.png' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Role des utilisateurs</h4>
+							<p>Cette page vous permettra de gérer les rôles des utilisateurs</p>				
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a title="Partenaires " href="Users">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/img_partenaire.png' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Partenaires</h4>
+							<p>Cette page vous permettra de gérer les partenaires</p>				
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="col-md-4">
+				<a title="Etats" href="Etats">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/Workflow-engine.png' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Etats</h4>
+							<p>Cette page vous permettra de créer de nouveaux etats pour les missions</p>		
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a title="Missions " href="Missions">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/mission-md.png' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Missions</h4>	
+							<p>Cette page vous permettra de gérer les missions</p>					
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a title="Export" href="Export">  
+					<figure class="effect-marley">
+						<img style="height:30%" src="<c:url value='resources/images/Export-Stamp.jpg' />" alt="" class="img-responsive"/>
+						<figcaption>
+							<h4>Export</h4>
+							<p>Exportation des missions</p>				
+						</figcaption>			
+					</figure>
+				</a>
+			</div>
+	</div>	
+	</div>
 	</section><!-- /container -->
 	
-    <!-- javascripts -->
-<!--    <script src="<c:url value="/resources/js/jquery.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery-ui-1.10.4.min.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery-1.8.3.min.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.9.2.custom.min.js" />"></script>
-     bootstrap 
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-     nice scroll 
-    <script src="<c:url value="/resources/js/jquery.scrollTo.min.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery.nicescroll.js" />" type="text/javascript"></script>
-     charts scripts 
-    <script src="<c:url value="/resources/assets/jquery-knob/js/jquery.knob.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery.sparkline.js" />" type="text/javascript"></script>
-    <script src="<c:url value="/resources/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js" />"></script>
-    <script src="<c:url value="/resources/js/owl.carousel.js" />"></script>
-     jQuery full calendar 
-    <script src="<c:url value="/resources/js/fullcalendar.min.js" />"></script>
-    <script src="<c:url value="/resources/assets/fullcalendar/fullcalendar/fullcalendar.js" />"></script>
-    script for this page only
-    <script src="<c:url value="/resources/js/calendar-custom.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery.rateit.min.js" />" type="text/javascript"></script>
-     custom select 
-    <script src="<c:url value="/resources/js/jquery.customSelect.min.j" />"></script>
-    <script src="<c:url value="/resources/assets/chart-master/Chart.js" />" type="text/javascript"></script>
-   
-    custome script for all page
-    <script src="<c:url value="/resources/js/scripts.js" />"></script>
-     custom script for this page
-    <script src="js/sparkline-chart.js"></script>
-    <script src="js/easy-pie-chart.js"></script>
-	<script src="js/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="js/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="js/xcharts.min.js"></script>
-	<script src="js/jquery.autosize.min.js"></script>
-	<script src="js/jquery.placeholder.min.js"></script>
-	<script src="js/gdp-data.js"></script>	
-	<script src="js/morris.min.js"></script>
-	<script src="js/sparklines.js"></script>	
-	<script src="js/charts.js"></script>
-	<script src="js/jquery.slimscroll.min.js"></script>
-  <script>
-
-  //knob
-  $(function() {
-    $(".knob").knob({
-      'draw' : function () { 
-        $(this.i).val(this.cv + '%')
-      }
-    })
-  });
-
-  //carousel
-  $(document).ready(function() {
-      $("#owl-slider").owlCarousel({
-          navigation : true,
-          slideSpeed : 300,
-          paginationSpeed : 400,
-          singleItem : true
-
-      });
-  });
-
-  //custom select box
-
-  $(function(){
-      $('select.styled').customSelect();
-  });
-  
-  /* ---------- Map ---------- */
-$(function(){
-  $('#map').vectorMap({
-    map: 'world_mill_en',
-    series: {
-      regions: [{
-        values: gdpData,
-        scale: ['#000', '#000'],
-        normalizeFunction: 'polynomial'
-      }]
-    },
-	backgroundColor: '#eef3f7',
-    onLabelShow: function(e, el, code){
-      el.html(el.html()+' (GDP - '+gdpData[code]+')');
-    }
-  });
-});
-
-
-
-</script>-->
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<c:url value="/resources/js/jquery.js" />"></script>		
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>	
+    <script src="<c:url value="/resources/day/js/wow.min.js" />"></script>	
+	<script>
+	wow = new WOW(
+	 {
+	
+		}	) 
+		.init();
+	</script>	
 </body>
 </html>
